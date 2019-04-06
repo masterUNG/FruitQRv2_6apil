@@ -2,12 +2,30 @@ package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 public class Myconstant {
 
+    private  String[] favoriteFruits = {"โปรดเลือกชื่อผลไม้","ส้ม","มะละกอ", "แตงโม","ทุเรียน"};
+    private  String[] units = {"กิโลกรัม","ผล","ลัง"};
+
+    private String nameFileSharePreference = "Fruit";
+
     private String urlAddUser = "https://www.androidthai.in.th/rmutk/addDataLilly.php";
     private String urlGetAllData = "https://www.androidthai.in.th/rmutk/getAllDatalilly.php";
     private String urlGetDataWhereQR = "https://www.androidthai.in.th/rmutk/getDetailWhereQRmaster.php";
     private String urlGetUserWhereId = "https://www.androidthai.in.th/rmutk/getUserWhereId.php";
     private String urlGetAllDetail = "https://www.androidthai.in.th/rmutk/getDetail.php";
     private String urlGetDetailWhereIdUser = "https://www.androidthai.in.th/rmutk/getDetailWhereIdUser.php";
+
+
+    public String[] getFavoriteFruits() {
+        return favoriteFruits;
+    }
+
+    public String[] getUnits() {
+        return units;
+    }
+
+    public String getNameFileSharePreference() {
+        return nameFileSharePreference;
+    }
 
     public String getUrlGetDetailWhereIdUser() {
         return urlGetDetailWhereIdUser;

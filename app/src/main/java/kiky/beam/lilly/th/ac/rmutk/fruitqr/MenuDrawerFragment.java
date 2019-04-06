@@ -1,11 +1,13 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,30 +20,75 @@ import java.util.ArrayList;
  */
 public class MenuDrawerFragment extends Fragment {
 
+    private int typeDataInt;
+    private String idLogin;
+
     //    Admin
-    private int[] iconAdmin = {R.drawable.ic_action_home, R.drawable.ic_action_home, R.drawable.ic_action_home};
-    private String[] titleAdmin = {"หน้าหลัก1", "สแกน", "รายการ"};
+    private int[] iconAdmin = {
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_qrb,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_home
+    };
+    private String[] titleAdmin = {
+            "หน้าหลัก1",
+            "สแกน QR Code",
+            "รายการผลผลิต",
+            "เพิ่มรายการผลผลิต",
+            "รายการผลิตภัณฑ์",
+            "เพิ่มรายการผลิตภัณฑ์",
+            "เพิ่มสมาชิก",
+            "ข้อมูลส่วนตัว",
+            "เกี่ยวกับเรา",
+            "ออกจากระบบ"
+    };
 
     //    Framer
-    private int[] iconFramer = {R.drawable.ic_action_home, R.drawable.ic_action_home, R.drawable.ic_action_home};
-    private String[] titleFramer = {"หน้าหลัก2", "สแกน", "รายการ"};
+    private int[] iconFramer = {
+            R.drawable.ic_action_home,  R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home,
+            R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home};
+
+    private String[] titleFramer = {
+            "หน้าหลัก2",
+            "สแกน QR Code",
+            "รายการผลผลิต",
+            "เพิ่มรายการผลผลิต",
+            "ข้อมูลส่วนตัว",
+            "เกี่ยวกับเรา",
+            "ออกจากระบบ"};
 
     //    Product
-    private int[] iconProduce = {R.drawable.ic_action_home, R.drawable.ic_action_home, R.drawable.ic_action_home};
-    private String[] titleProduct = {"หน้าหลัก3", "สแกน", "รายการ"};
+    private int[] iconProduce = {
+            R.drawable.ic_action_home,  R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home,
+            R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home};
+    private String[] titleProduct = {
+            "หน้าหลัก3", "สแกน QR Code", "รายการผลิตภัณฑ์", "เพิ่มรายการผลิตภัณฑ์", "ข้อมูลส่วนตัว", "เกี่ยวกับเรา", "ออกจากระบบ"};
 
     //    Customer
-    private int[] iconCustomer = {R.drawable.ic_action_home, R.drawable.ic_action_home, R.drawable.ic_action_home};
-    private String[] titleCustomer = {"หน้าหลัก4", "สแกน", "รายการ"};
+    private int[] iconCustomer = {
+            R.drawable.ic_action_home, R.drawable.ic_action_home,R.drawable.ic_action_home,R.drawable.ic_action_home,
+            R.drawable.ic_action_home, R.drawable.ic_action_home,R.drawable.ic_action_home,R.drawable.ic_action_home,
+            R.drawable.ic_action_home};
+    private String[] titleCustomer = {
+            "หน้าหลัก4", "สแกน QR Code", "รายการผลผลิต", "เพิ่มรายการผลผลิต", "รายการผลิตภัณฑ์",
+            "เพิ่มรายการผลิตภัณฑ์", "ข้อมูลส่วนตัว", "เกี่ยวกับเรา", "ออกจากระบบ"
+    };
 
     public MenuDrawerFragment() {
         // Required empty public constructor
     }
 
-    public static MenuDrawerFragment menuDrawerInstance(String typeDataString) {
+    public static MenuDrawerFragment menuDrawerInstance(String typeDataString, String idLogin) {
         MenuDrawerFragment menuDrawerFragment = new MenuDrawerFragment();
         Bundle bundle = new Bundle();
         bundle.putString("TypeData", typeDataString);
+        bundle.putString("TypeLogin", idLogin);//เพิ่ม
         menuDrawerFragment.setArguments(bundle);
         return menuDrawerFragment;
     }
@@ -51,7 +98,8 @@ public class MenuDrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         String typeDataString = getArguments().getString("TypeData").trim();
-        int typeDataInt = Integer.parseInt(typeDataString);
+        typeDataInt = Integer.parseInt(typeDataString);
+        idLogin = getArguments().getString("TypeLogin");//
 
         switch (typeDataInt) {
             case 1:
@@ -88,12 +136,106 @@ public class MenuDrawerFragment extends Fragment {
         MenuDrawerAdapter menuDrawerAdapter = new MenuDrawerAdapter(getActivity(), integerArrayList, stringArrayList, new OnClickItem() {
             @Override
             public void onClickitem(View view, int position) {
+                Log.d("6AprilV1", "You Click Position at ===>>> " + position);
+                ((ServiceActivity)getActivity()).serviceCloseDrawer();
+
+                switch (typeDataInt) { //มี4ประเภท Amin
+                    case 1:
+                        chooseCase1(position);
+                        break;
+                    case 2:
+                        chooseCase2(position);
+                        break;
+                    case 3:
+                        chooseCase3(position);
+                        break;
+                    case 4:
+                        chooseCase4(position);
+                        break;
+                }
 
             }
         });
         recyclerView.setAdapter(menuDrawerAdapter);
 
     }
+
+    private void chooseCase1(int position) { //Admin
+        switch (position){
+            case 0:// Fragment
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                break;
+
+            case 1:
+                Intent intent = new Intent(getActivity(), QRActivity.class);
+                intent.putExtra("Login", false);
+                startActivity(intent);
+
+                break;
+
+            case 2:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+
+                break;
+
+            case 3:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+        }
+    }
+
+    private void chooseCase2(int position) {
+    }
+    private void chooseCase3(int position) {
+    }
+    private void chooseCase4(int position) {
+    }
+
+    private void goTutorial(){}
+
+    private void goScanQRcode(){}
+
+    private void goListFramer(){}
+
+    private void goAddFramer(){}
+
+    private void goListProduct(){}
+
+    private void goAddProduct(){}
+
+    private void goAddRegister(){}
+
+    private void goInfo(){}
+
+    private void goAboutMe(){}
+
+    private void goExit(){}
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

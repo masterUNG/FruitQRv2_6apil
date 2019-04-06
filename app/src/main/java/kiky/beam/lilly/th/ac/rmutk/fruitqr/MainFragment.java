@@ -1,8 +1,10 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
+    private Myconstant myconstant = new Myconstant();
 
 
     public MainFragment() {
@@ -116,6 +119,12 @@ public class MainFragment extends Fragment {
                             myAlertDialog.normalDialog("User False", "No This User in My Database");
                         }else if (password.equals(truePassword)) {
                             Toast.makeText(getActivity(),"Welcome"+name,Toast.LENGTH_SHORT).show();;
+                            //ฝัง idlogin ในแอพ
+                            SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("idLogin", idString);
+                            editor.commit();
+
                             Intent intent = new Intent(getActivity(), ServiceActivity.class);
                             intent.putExtra("id", idString);
                             startActivity(intent);
