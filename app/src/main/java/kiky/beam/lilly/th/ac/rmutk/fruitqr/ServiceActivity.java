@@ -19,8 +19,7 @@ import android.support.design.widget.NavigationView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ServiceActivity extends AppCompatActivity
-            implements NavigationView.OnNavigationItemSelectedListener {
+public class ServiceActivity extends AppCompatActivity {
 
 
     private DrawerLayout drawerLayout;
@@ -94,9 +93,15 @@ public class ServiceActivity extends AppCompatActivity
 
             showList();
 
+            createMenuDrawer();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void createMenuDrawer() {
+        getSupportFragmentManager().beginTransaction().add(R.id.contentMenuDrawerFragment, MenuDrawerFragment.menuDrawerInstance(typeUserString)).commit();
     }
 
     @Override
@@ -140,34 +145,7 @@ public class ServiceActivity extends AppCompatActivity
 
 
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.action_main) { //หน้าหลัก
-            Intent intent1 = new Intent(ServiceActivity.this, MainActivity.class);
-            startActivity(intent1);
-
-        } else if (id == R.id.action_scan) { //หน้าสแกน
-            Intent intent2 = new Intent(ServiceActivity.this, QRActivity.class);
-            startActivity(intent2);
-
-
-        } else if (id == R.id.action_farmer) { //หน้าผลผลิต
-            Intent intent3 = new Intent(ServiceActivity.this, DetailServiceActivity.class);
-            startActivity(intent3);
-
-        } else if (id == R.id.action_addframer) { //เพิ่มผลิตภัณฑ์
-            Intent intent4 = new Intent(ServiceActivity.this, ProductFragment.class);
-            startActivity(intent4);
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.layoutDrawerLayout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
 } //Main Class
