@@ -1,5 +1,7 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
+import java.lang.ref.SoftReference;
+
 public class Myconstant {
 
     private  String[] favoriteFruits = {"โปรดเลือกชื่อผลไม้","ส้ม","มะละกอ", "แตงโม","ทุเรียน"};
@@ -15,6 +17,17 @@ public class Myconstant {
     private String urlGetAllDetail = "https://www.androidthai.in.th/rmutk/getDetail.php";
     private String urlGetDetailWhereIdUser = "https://www.androidthai.in.th/rmutk/getDetailWhereIdUser.php";
 
+    private String urlGetDetailFramerWhereIdRecord = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordLilly.php"; //ดูได้แค่ผู้ผลิค
+    private String urlGetAllDetailFramer = "http://www.androidthai.in.th/rmutk/getAllDetaiFramerLilly.php"; //Admin ดูได้ทั้งหมด
+
+
+    public String getUrlGetDetailFramerWhereIdRecord() {
+        return urlGetDetailFramerWhereIdRecord;
+    }
+
+    public String getUrlGetAllDetailFramer() {
+        return urlGetAllDetailFramer;
+    }
 
     public String getUrlAddDetailFramer() {
         return urlAddDetailFramer;
