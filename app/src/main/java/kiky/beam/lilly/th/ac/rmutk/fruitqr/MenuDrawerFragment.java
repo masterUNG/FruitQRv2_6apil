@@ -221,10 +221,15 @@ public class MenuDrawerFragment extends Fragment {
 
 //              ผู้พัฒนา
             case 9:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
                 break;
 
 //              ออกจากระบบ
             case 10:
+                getActivity().finish();
                 break;
         }
     }
@@ -245,21 +250,25 @@ public class MenuDrawerFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), QRActivity.class);
                 intent.putExtra("Login", false);
                 startActivity(intent);
+                break;
 
-//              เพิ่มรานการผลผลิต
+//              รายการผลผลิต
             case 2:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ShowListFramerFragment()).commit();
+                break;
+
+//                เพิ่มผลผลิต
+            case 3:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
                 break;
 
-//                รายการผลิตภัณฑ์
-            case 3:
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+//                ข้อมูลส่วนตัว
             case 4:
                 getActivity()
                         .getSupportFragmentManager()
@@ -267,6 +276,7 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
                 break;
 
+//                เกี่ยวกับเรา
             case 5:
                 getActivity()
                         .getSupportFragmentManager()
@@ -274,6 +284,7 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
                 break;
 
+//                ออกจากระบบ
             case 6:
                 getActivity().finish();
                 break;
@@ -282,7 +293,54 @@ public class MenuDrawerFragment extends Fragment {
 
     //For Login Product Yype
     private void chooseCase3(int position) {
+        switch(position){
+//              หน้าหลัก
+            case 0:// Fragment
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                break;
+
+//            สแกน QR Code
+            case 1:
+                Intent intent = new Intent(getActivity(), QRActivity.class);
+                intent.putExtra("Login", false);
+                startActivity(intent);
+                break;
+
+//              รายการผลิตภัณฑ์
+            case 2:
+
+                break;
+
+//               เพิ่มรายการผลิตภัณฑ์
+            case 3:
+
+                break;
+
+//                ข้อมูลส่วนตัว
+            case 4:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+                break;
+
+//              เกี่ยวกับเรา
+            case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
+                break;
+//              ออกจากระบบ
+            case 6:
+                getActivity().finish();
+                break;
+        }
     }
+
     private void chooseCase4(int position) {
     }
 
