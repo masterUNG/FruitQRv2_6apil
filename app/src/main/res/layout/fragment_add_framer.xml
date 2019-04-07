@@ -20,8 +20,9 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+<!-- android:inputType="number" ใส่ได้แค่ตัวเเลข-->
             <EditText
+                android:inputType="number"
                 android:hint="Amount:"
                 android:layout_weight="2"
                 android:id="@+id/edtAmount"

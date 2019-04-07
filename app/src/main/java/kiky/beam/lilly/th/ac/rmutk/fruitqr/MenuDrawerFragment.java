@@ -180,7 +180,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+                        .replace(R.id.contentServiceFragment,new ShowListFramerFragment()).commit();
 
                 break;
 
@@ -191,6 +191,10 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
                 break;
             case 4:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
                 break;
             case 5:
                 break;
