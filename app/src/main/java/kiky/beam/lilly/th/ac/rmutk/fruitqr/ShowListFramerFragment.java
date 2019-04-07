@@ -26,7 +26,7 @@ import java.util.ArrayList;
  */
 public class ShowListFramerFragment extends Fragment {
 
-    private String typeUserString;
+    private String typeUserString, idRecordString;
     private Myconstant myconstant = new Myconstant();
 
     public ShowListFramerFragment() {
@@ -46,6 +46,7 @@ public class ShowListFramerFragment extends Fragment {
         try {
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
             typeUserString = sharedPreferences.getString("TypeUser", "");
+            idRecordString = sharedPreferences.getString("idLogin", "");
 
             int index = Integer.parseInt(typeUserString.trim()); //เอามาเทสก่อน
 
@@ -59,7 +60,7 @@ public class ShowListFramerFragment extends Fragment {
 
             } else{ //สถานะมากกว่า1
                 GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
-                getDataWhereOneColumn.execute("idRecord", typeUserString, myconstant.getUrlGetDetailFramerWhereIdRecord());
+                getDataWhereOneColumn.execute("idRecord", idRecordString, myconstant.getUrlGetDetailFramerWhereIdRecord());
                 result = getDataWhereOneColumn.get();
 
                 }

@@ -160,6 +160,7 @@ public class MenuDrawerFragment extends Fragment {
 
     }
 
+    //For Login Admin Yype
     private void chooseCase1(int position) { //Admin
         switch (position){
 //              หน้าหลัก
@@ -228,8 +229,58 @@ public class MenuDrawerFragment extends Fragment {
         }
     }
 
+
+    //For Login Framer Yype
     private void chooseCase2(int position) {
+        switch(position){
+//              หน้าหลัก
+            case 0:// Fragment
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                break;
+//            สแกน QR Code
+            case 1:
+                Intent intent = new Intent(getActivity(), QRActivity.class);
+                intent.putExtra("Login", false);
+                startActivity(intent);
+
+//              เพิ่มรานการผลผลิต
+            case 2:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
+                break;
+
+//                รายการผลิตภัณฑ์
+            case 3:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+            case 4:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+                break;
+
+            case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
+                break;
+
+            case 6:
+                getActivity().finish();
+                break;
+        }
     }
+
+    //For Login Product Yype
     private void chooseCase3(int position) {
     }
     private void chooseCase4(int position) {
