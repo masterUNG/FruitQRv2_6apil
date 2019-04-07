@@ -27,7 +27,7 @@ import org.json.JSONObject;
  */
 public class MainFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-
+    private String typeUser;
 
     public MainFragment() {
         // Required empty public constructor //กำหนดค่าเริ่มต้น
@@ -112,6 +112,7 @@ public class MainFragment extends Fragment {
                                 truePassword = jsonObject.getString("Password");
                                 name = jsonObject.getString("Name");
                                 idString = jsonObject.getString("id");
+                                typeUser = jsonObject.getString("TypeUser"); //ประเภท
                             }
                         }
 
@@ -123,7 +124,9 @@ public class MainFragment extends Fragment {
                             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("idLogin", idString);
+                            editor.putString("TypeUser", typeUser);
                             editor.commit();
+
 
                             Intent intent = new Intent(getActivity(), ServiceActivity.class);
                             intent.putExtra("id", idString);

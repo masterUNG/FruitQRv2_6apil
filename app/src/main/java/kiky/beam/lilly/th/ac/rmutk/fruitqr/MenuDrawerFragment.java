@@ -162,20 +162,21 @@ public class MenuDrawerFragment extends Fragment {
 
     private void chooseCase1(int position) { //Admin
         switch (position){
+//              หน้าหลัก
             case 0:// Fragment
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
                 break;
-
+//            สแกน QR Code
             case 1:
                 Intent intent = new Intent(getActivity(), QRActivity.class);
                 intent.putExtra("Login", false);
                 startActivity(intent);
 
                 break;
-
+//              รายการผลผลิต
             case 2:
                 getActivity()
                         .getSupportFragmentManager()
@@ -184,28 +185,44 @@ public class MenuDrawerFragment extends Fragment {
 
                 break;
 
+//              เพิ่มรานการผลผลิต
             case 3:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
                 break;
+
+//                รายการผลิตภัณฑ์
             case 4:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+
                 break;
+
+//                เพิ่มรายการผลิตภัณฑ์
             case 5:
                 break;
+
+//                เพิ่มสมาชิก
             case 6:
                 break;
+
+//              ข้อมูลสมาชิก
             case 7:
                 break;
+
+//              ผู้พัฒนา
             case 8:
                 break;
+
+//              ผู้พัฒนา
             case 9:
                 break;
+
+//              ออกจากระบบ
             case 10:
                 break;
         }
