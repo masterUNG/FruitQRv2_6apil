@@ -27,22 +27,22 @@ public class MenuDrawerFragment extends Fragment {
     private int[] iconAdmin = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_qrb,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home,
-            R.drawable.ic_action_home
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_framer,
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_product,
+            R.drawable.ic_action_addregister,
+            R.drawable.ic_action_register,
+            R.drawable.ic_action_aboutme,
+            R.drawable.ic_action_exitt
     };
     private String[] titleAdmin = {
             "หน้าหลัก1",
             "สแกน QR Code",
             "รายการผลผลิต",
-            "เพิ่มรายการผลผลิต",
+            "เพิ่มผลผลิต",
             "รายการผลิตภัณฑ์",
-            "เพิ่มรายการผลิตภัณฑ์",
+            "เพิ่มผลิตภัณฑ์",
             "เพิ่มสมาชิก",
             "ข้อมูลส่วนตัว",
             "เกี่ยวกับเรา",
@@ -51,8 +51,13 @@ public class MenuDrawerFragment extends Fragment {
 
     //    Framer
     private int[] iconFramer = {
-            R.drawable.ic_action_home,  R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home,
-            R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home};
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_qrb,
+            R.drawable.ic_action_framer,
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_register,
+            R.drawable.ic_action_aboutme,
+            R.drawable.ic_action_exitt};
 
     private String[] titleFramer = {
             "หน้าหลัก2",
@@ -65,19 +70,45 @@ public class MenuDrawerFragment extends Fragment {
 
     //    Product
     private int[] iconProduce = {
-            R.drawable.ic_action_home,  R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home,
-            R.drawable.ic_action_home,  R.drawable.ic_action_home, R.drawable.ic_action_home};
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_qrb,
+            R.drawable.ic_action_framer,
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_register,
+            R.drawable.ic_action_aboutme,
+            R.drawable.ic_action_exitt};
+
     private String[] titleProduct = {
-            "หน้าหลัก3", "สแกน QR Code", "รายการผลิตภัณฑ์", "เพิ่มรายการผลิตภัณฑ์", "ข้อมูลส่วนตัว", "เกี่ยวกับเรา", "ออกจากระบบ"};
+            "หน้าหลัก3",
+            "สแกน QR Code",
+            "รายการผลิตภัณฑ์",
+            "เพิ่มรายการผลิตภัณฑ์",
+            "ข้อมูลส่วนตัว",
+            "เกี่ยวกับเรา",
+            "ออกจากระบบ"};
 
     //    Customer
     private int[] iconCustomer = {
-            R.drawable.ic_action_home, R.drawable.ic_action_home,R.drawable.ic_action_home,R.drawable.ic_action_home,
-            R.drawable.ic_action_home, R.drawable.ic_action_home,R.drawable.ic_action_home,R.drawable.ic_action_home,
-            R.drawable.ic_action_home};
+            R.drawable.ic_action_home,
+            R.drawable.ic_action_qrb,
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_framer,
+            R.drawable.ic_action_listframer,
+            R.drawable.ic_action_product,
+            R.drawable.ic_action_register,
+            R.drawable.ic_action_aboutme,
+            R.drawable.ic_action_exitt};
+
     private String[] titleCustomer = {
-            "หน้าหลัก4", "สแกน QR Code", "รายการผลผลิต", "เพิ่มรายการผลผลิต", "รายการผลิตภัณฑ์",
-            "เพิ่มรายการผลิตภัณฑ์", "ข้อมูลส่วนตัว", "เกี่ยวกับเรา", "ออกจากระบบ"
+            "หน้าหลัก4",
+            "สแกน QR Code",
+            "รายการผลผลิต",
+            "เพิ่มผลผลิต",
+            "รายการผลิตภัณฑ์",
+            "เพิ่มผลิตภัณฑ์",
+            "ข้อมูลส่วนตัว",
+            "เกี่ยวกับเรา",
+            "ออกจากระบบ"
     };
 
     public MenuDrawerFragment() {
@@ -186,7 +217,7 @@ public class MenuDrawerFragment extends Fragment {
 
                 break;
 
-//              เพิ่มรานการผลผลิต
+//              เพิ่มรายการผลผลิต
             case 3:
                 getActivity()
                         .getSupportFragmentManager()
@@ -311,11 +342,18 @@ public class MenuDrawerFragment extends Fragment {
 
 //              รายการผลิตภัณฑ์
             case 2:
-
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
                 break;
 
 //               เพิ่มรายการผลิตภัณฑ์
             case 3:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
 
                 break;
 
