@@ -1,13 +1,18 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Picture;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -17,13 +22,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
 
 
 /**
@@ -31,12 +46,12 @@ import java.util.ArrayList;
  */
 public class AddProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-    private  String idRecord, NameRecord, TypeRecord, idFarmer, Name, Detail, Image, Amount, Unit, Date, QRcode;
+    private  String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image, Amount, Unit, Date, QRcode;
 
     private ImageView imageView;
     private Uri uri;
+    private  boolean picABoolean = true;
 
-    private  boolean pictureABoolean = true;
 
 
     public AddProductFragment() {
@@ -47,13 +62,146 @@ public class AddProductFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-    //Create RecyclerView
+//      Create RecyclerView
         createRecyclerView();
 
-    // Picture Controller();
+//      Picture Controller();
         pritureController();
 
+//      Date Controller
+        dateController();
+
+//      Unit Controller
+        unitController();
+
+//      Add Product
+        addProduct();
+
+//        Qr Controller
+        qrController();
+
     }// Main Method
+
+    private void qrController() { // Random
+        TextView textView = getView().findViewById(R.id.txtQRcode);
+        Random random = new Random();
+        int i = random.nextInt(10000);
+        QRcode = "product" + Integer.toString(i);
+        textView.setText(QRcode);
+    }
+
+    private void unitController() {
+        final Spinner spinner = getView().findViewById(R.id.spnUnit);
+        final String[] strings = myconstant.getUnits();
+        Unit = strings[0];
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, strings);
+        spinner.setAdapter(stringArrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Unit = strings[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Unit = strings[0];
+            }
+        });
+    }
+
+    private void dateController() {
+        Button button = getView().findViewById(R.id.btnSetDate);
+        final TextView textView = getView().findViewById(R.id.txtDate);
+        final Calendar calendar = Calendar.getInstance();
+        final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date = dateFormat.format(calendar.getTime()); //เอาเวลาปัจจุบันมาใส่
+        textView.setText(Date);
+
+        //ปฎิทิน
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Calendar calendar1 = Calendar.getInstance();
+                        calendar1.set(year, month, dayOfMonth);
+                        Date = dateFormat.format(calendar1.getTime());
+                        textView.setText(Date);
+
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
+    }
+
+    private void addProduct() { //กดที่ปุ่มAdd
+        Button button = getView().findViewById(R.id.btnAddProduct);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
+                //ดึงค่ามาจาก MainFragment
+                idRecord = sharedPreferences.getString("idLogin", "");
+                NameRecord = sharedPreferences.getString("Name", "");
+                TypeRecord = sharedPreferences.getString("TypeUser", "");
+
+                EditText nameProductEditText = getView().findViewById(R.id.edtProduct);
+                Name = nameProductEditText.getText().toString().trim();
+                EditText detailEditText = getView().findViewById(R.id.edtDetailProduct);
+                Detail = detailEditText.getText().toString().trim();
+                EditText amountEditText = getView().findViewById(R.id.edtAmount);
+                Amount = amountEditText.getText().toString().trim();
+
+
+                MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
+                if (idFarmer.length() == 0) {
+                    myAlertDialog.normalDialog("ยังไม่ได้เลือก ผลผลิต","กรุณาเลือกผลผลิต");
+
+                } else if (Name.isEmpty()) {
+                    myAlertDialog.normalDialog("ไม่มีชื่อผลิตภัณฑ์", "กรุณาพิมพ์ชื่อผลิตภัณฑ์");
+
+                } else if (Detail.isEmpty()) {
+                    myAlertDialog.normalDialog("ไม่มีรายละเอียดผลิตภัณฑ์", "กรุณาพิมพ์รายละเอียดผลิตภัณฑ์");
+
+                } else if (Amount.isEmpty()) {
+                    myAlertDialog.normalDialog("ไม่มีจำนวนผลิตภัณฑ์", "กรุณาพิมพ์จำนวน");
+
+                } else if (picABoolean) {
+                    Image = myconstant.getUrlProductPic();
+                } else {
+
+                    //หาตำแหน่ง path ของรูป เพื่ออัพเดต
+                    String path = null;
+                    String[] strings = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getActivity().getContentResolver().query(uri, strings, null, null, null);
+                    if (cursor != null) {
+                        cursor.moveToFirst();
+                        int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                        path = cursor.getString(index);
+
+                    } else {
+                        path = uri.getPath();
+                    }
+
+                    Log.d("11AprilV2", "path ==> " + path);
+
+                    String nameImage = path.substring(path.indexOf("/")); //หลังหาคำที่อยู่เครื่องหมาย / Camera/20190411_135758.jpg
+
+                    Image = "https://www.androidthai.in.th/rmutk/Picture" + nameImage;
+                    Log.d("11AprilV2", "Image ==>> " + Image);
+
+
+                } //if
+
+            }
+        });
+
+
+    }
 
     private void pritureController() {
         imageView = getView().findViewById(R.id.imvProduct);
@@ -76,6 +224,7 @@ public class AddProductFragment extends Fragment {
 
         if (resultCode == getActivity().RESULT_OK) {//ถ้าเลือกรูปได้
             uri = data.getData();
+            picABoolean = false;
 
             try {
                 Bitmap bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri));

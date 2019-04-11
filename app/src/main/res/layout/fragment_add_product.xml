@@ -90,7 +90,7 @@
 
                 <TextView
                     android:layout_centerVertical="true"
-                    android:id="@+id/textDate"
+                    android:id="@+id/txtDate"
                     android:textSize="@dimen/h2"
                     android:text="xx/xx/xxxx"
                     android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
                 android:layout_height="200dp" />
 
             <TextView
-                android:id="@+id/textQRcode"
+                android:id="@+id/txtQRcode"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#009688"
                 android:textStyle="bold"
