@@ -44,7 +44,7 @@ public class MenuDrawerFragment extends Fragment {
             "รายการผลิตภัณฑ์",
             "เพิ่มผลิตภัณฑ์",
             "เพิ่มสมาชิก",
-            "ข้อมูลส่วนตัว",
+            "สมาชิก",
             "เกี่ยวกับเรา",
             "ออกจากระบบ"
     };
@@ -230,28 +230,36 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
-
+                        .replace(R.id.contentServiceFragment,new ShowListProductFragment()).commit();
                 break;
 
 //                เพิ่มรายการผลิตภัณฑ์
             case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddProductFragment()).commit();
                 break;
 
 //                เพิ่มสมาชิก
             case 6:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new RegisterFragment()).commit();
                 break;
 
 //              ข้อมูลสมาชิก
             case 7:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ShowListMemberFragment()).commit();
                 break;
+
 
 //              ผู้พัฒนา
             case 8:
-                break;
-
-//              ผู้พัฒนา
-            case 9:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -259,7 +267,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              ออกจากระบบ
-            case 10:
+            case 9:
                 getActivity().finish();
                 break;
         }
@@ -345,7 +353,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,ShowListFragment.showListInstance(typeDataInt,idLogin)).commit();
+                        .replace(R.id.contentServiceFragment,new ShowListProductFragment()).commit();
                 break;
 
 //               เพิ่มรายการผลิตภัณฑ์
@@ -353,7 +361,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new AddProductFragment()).commit();
 
                 break;
 

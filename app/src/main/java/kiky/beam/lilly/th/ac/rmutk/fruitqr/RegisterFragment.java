@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -33,22 +34,14 @@ public class RegisterFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        Create Toolbar //เรัยก Toolbar Supprot v.7
-        Toolbar toolbar = getView().findViewById(R.id.toobarRegister);
-        ((MainActivity)getActivity()).setSupportActionBar(toolbar); //MainActivity เหมือนคน  getActivity เป็นตัวเชื่อม
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.register));//Toolbar เป็นภาษาไทย
-        //        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Register"); Toolbar เป็นภาษาอังกฤษ
-
-        //ทำปุ่มย้อนกลับ <-
-        ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//        Uploand Controller
+        Button button = getView().findViewById(R.id.btnUpload);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStack();
+                uploadValueToServer();
             }
         });
-        setHasOptionsMenu(true);
 
 
         // RadioGroup
@@ -81,12 +74,6 @@ public class RegisterFragment extends Fragment {
     //คลิกรูป itemUpload
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.itemUpload ){
-
-            uploadValueToServer();
-            return  true;
-
-        }
 
         return super.onOptionsItemSelected(item);
 
