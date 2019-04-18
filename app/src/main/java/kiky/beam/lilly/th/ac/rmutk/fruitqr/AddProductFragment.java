@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Picture;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,15 +31,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
+
+import it.sauronsoftware.ftp4j.FTPClient;
+import it.sauronsoftware.ftp4j.FTPDataTransferListener;
 
 
 /**
@@ -46,12 +52,11 @@ import java.util.Random;
  */
 public class AddProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-    private  String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image, Amount, Unit, Date, QRcode;
+    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image, Amount, Unit, Date, QRcode;
 
     private ImageView imageView;
     private Uri uri;
-    private  boolean picABoolean = true;
-
+    private boolean picABoolean = true;
 
 
     public AddProductFragment() {
@@ -159,7 +164,7 @@ public class AddProductFragment extends Fragment {
 
                 MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
                 if (idFarmer.length() == 0) {
-                    myAlertDialog.normalDialog("ยังไม่ได้เลือก ผลผลิต","กรุณาเลือกผลผลิต");
+                    myAlertDialog.normalDialog("ยังไม่ได้เลือก ผลผลิต", "กรุณาเลือกผลผลิต");
 
                 } else if (Name.isEmpty()) {
                     myAlertDialog.normalDialog("ไม่มีชื่อผลิตภัณฑ์", "กรุณาพิมพ์ชื่อผลิตภัณฑ์");
@@ -189,10 +194,52 @@ public class AddProductFragment extends Fragment {
 
                     Log.d("11AprilV2", "path ==> " + path);
 
-                    String nameImage = path.substring(path.indexOf("/")); //หลังหาคำที่อยู่เครื่องหมาย / Camera/20190411_135758.jpg
+                    String nameImage = path.substring(path.lastIndexOf("/")); //หาชื่อรูปที่อยู่หลังเครื่องหมาย / Camera/20190411_135758.jpg
 
                     Image = "https://www.androidthai.in.th/rmutk/Picture" + nameImage;
-                    Log.d("11AprilV2", "Image ==>> " + Image);
+
+
+                    // ได้ข้อมูลแล้วว แต่ยังไม่ได้โยนขึ้นฐานข้อมูล
+
+                    File file = new File(path); //โหลดรูป pdf อะไรก็ได้
+                    FTPClient ftpClient = new FTPClient(); //โหลดไลเบอรรี่
+                    String tag = "18ApriV1";
+
+                    StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy
+                            .Builder().permitAll().build(); //ขออนุญาติเข้าถึง FTP ในอีกโปรโตคอลนึง
+                    StrictMode.setThreadPolicy(threadPolicy);
+
+                    try {
+                        ftpClient.connect("ftp.androidthai.in.th", 21);
+                        ftpClient.login("rmutk@androidthai.in.th", "Abc12345");
+                        ftpClient.setType(FTPClient.TYPE_BINARY);//ย่อขนาดไลเบอรรี่
+                        ftpClient.changeDirectory("Picture");
+                        ftpClient.upload(file, new UploadListener());
+
+                        Log.d("18AprilV2", "Image ==>> " + Image);
+
+                        //เพิ่มข้อมูลขึ้นฐานข้อมูล
+                        AddDetailProductThread addDetailProductThread = new AddDetailProductThread(getActivity());
+                        addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idFarmer, Name,
+                                Detail, Image, Amount, Unit, Date, QRcode, myconstant.getUrlAddDetailProduct());
+                        String result = addDetailProductThread.get();
+                        Log.d(tag, "result ==>>> " + result);
+
+                        if (Boolean.parseBoolean(result)) {
+                            goToProductList();
+                        }
+
+
+                    } catch (Exception e) {
+                        Log.d(tag, "e ==> " + e.toString());
+
+                        try {
+                            ftpClient.disconnect(true);
+                        } catch (Exception e1) {
+                            Log.d(tag, "e1 ==> " + e1.toString());
+                        }
+
+                    }
 
 
                 } //if
@@ -202,6 +249,50 @@ public class AddProductFragment extends Fragment {
 
 
     }
+
+    public void goToProductList() {
+        Log.d("18AprilV1", "goToProductList");
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.contentServiceFragment, new ShowListProductFragment())
+                .commit();
+
+    }
+
+    public class UploadListener implements FTPDataTransferListener { //สร้างคลาสซ้อนคลาส
+
+        @Override
+        public void started() {
+            Toast.makeText(getActivity(), "Start Uplaod", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void transferred(int i) {
+            Toast.makeText(getActivity(), "Continue Uplaod", Toast.LENGTH_SHORT).show(); //กำลังอัพโหลด
+        }
+
+        @Override
+        public void completed() {
+            Toast.makeText(getActivity(), "Complete Uplaod", Toast.LENGTH_SHORT).show(); //อัพโหลดเสร็จแล้ว
+//            AddProductFragment addProductFragment = new AddProductFragment();
+//            addProductFragment.goToProductList();
+
+        }
+
+        @Override
+        public void aborted() {
+            Toast.makeText(getActivity(), "Aborted Upload", Toast.LENGTH_SHORT).show(); //มีอะไรมาขัดจังหวะ
+
+        }
+
+        @Override
+        public void failed() {
+            Toast.makeText(getActivity(), "False Uplaod", Toast.LENGTH_SHORT).show(); //อัพโหลดไม่สำเร็จ
+
+        }
+    }
+
 
     private void pritureController() {
         imageView = getView().findViewById(R.id.imvProduct);
@@ -259,10 +350,10 @@ public class AddProductFragment extends Fragment {
             Log.d("11AprilV1", result);
 
             JSONArray jsonArray = new JSONArray(result);
-            for (int i=0; i < jsonArray.length(); i += 1){
+            for (int i = 0; i < jsonArray.length(); i += 1) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 nameStringArrayList.add(jsonObject.getString("Name"));
-                amountStringArrayList.add(jsonObject.getString("Amount")+ " " + jsonObject.getString("Unit"));
+                amountStringArrayList.add(jsonObject.getString("Amount") + " " + jsonObject.getString("Unit"));
                 dateStringArrayList.add(jsonObject.getString("Date"));
                 ownerStringArrayList.add(jsonObject.getString("idRecord"));
                 idStringArrayList.add(jsonObject.getString("id")); //ตาราง datailframer
@@ -274,13 +365,11 @@ public class AddProductFragment extends Fragment {
                     new OnClickItem() {
                         @Override
                         public void onClickitem(View view, int position) {
-                            confirmFruit(nameStringArrayList.get(position),idStringArrayList.get(position));
+                            confirmFruit(nameStringArrayList.get(position), idStringArrayList.get(position));
 
                         }
                     });
             recyclerView.setAdapter(showListFragmentAdapter);
-
-
 
 
         } catch (Exception e) {

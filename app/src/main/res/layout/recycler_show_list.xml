@@ -77,12 +77,19 @@
                     android:textSize="@dimen/h2"
                     android:textStyle="bold" />
 
+
             </LinearLayout>
 
 
         </LinearLayout>
 
     </LinearLayout>
+    <!--Line ทำเส้น-->
+    <View
+        android:layout_marginTop="1dp"
+        android:background="#CEC8C8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
 
 </LinearLayout>
