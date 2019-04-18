@@ -1,6 +1,7 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -61,6 +62,8 @@ public class ShowListProductFragment extends Fragment {
             ArrayList<String> amountStringArratList = new ArrayList<>();
             ArrayList<String> unitStringArratList = new ArrayList<>();
             ArrayList<String> iconStringArratList = new ArrayList<>();
+            final ArrayList<String> idDetailProductStringArratList = new ArrayList<>();
+
 
             JSONArray jsonArray = new JSONArray(jsonString);
             for (int i = 0; i < jsonArray.length(); i += 1) {
@@ -70,15 +73,21 @@ public class ShowListProductFragment extends Fragment {
             amountStringArratList.add(jsonObject.getString("Amount"));
             unitStringArratList.add(jsonObject.getString("Unit"));
             iconStringArratList.add(jsonObject.getString("Image"));
+                idDetailProductStringArratList.add(jsonObject.getString("id"));
                 Log.d("18AprilC1", iconStringArratList.get(i));
 
         }
 
         ShowListAdapter showListAdapter = new ShowListAdapter(getActivity(), nameStringArratList,
                 dateStringArratList, amountStringArratList, unitStringArratList, iconStringArratList, new OnClickItem() {
-            @Override
+            @Override //กดที่รายการ จะเข้าไปดูรายละเอัยด
             public void onClickitem(View view, int position) {
                 Log.d("18AprilV1", "Position ==> " + position);
+
+                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                intent.putExtra("idProduct", idDetailProductStringArratList.get(position));
+                startActivity(intent);
+
 
             }
         });
