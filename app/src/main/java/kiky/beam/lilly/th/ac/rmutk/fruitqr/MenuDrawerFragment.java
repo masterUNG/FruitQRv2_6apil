@@ -33,11 +33,12 @@ public class MenuDrawerFragment extends Fragment {
             R.drawable.ic_action_product,
             R.drawable.ic_action_addregister,
             R.drawable.ic_action_register,
+            R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,
             R.drawable.ic_action_exitt
     };
     private String[] titleAdmin = {
-            "หน้าหลัก1",
+            "หน้าหลัก",
             "สแกน QR Code",
             "รายการผลผลิต",
             "เพิ่มผลผลิต",
@@ -45,6 +46,7 @@ public class MenuDrawerFragment extends Fragment {
             "เพิ่มผลิตภัณฑ์",
             "เพิ่มสมาชิก",
             "สมาชิก",
+            "คู่มือการใช้งาน",
             "เกี่ยวกับเรา",
             "ออกจากระบบ"
     };
@@ -56,15 +58,17 @@ public class MenuDrawerFragment extends Fragment {
             R.drawable.ic_action_framer,
             R.drawable.ic_action_listframer,
             R.drawable.ic_action_register,
+            R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,
             R.drawable.ic_action_exitt};
 
     private String[] titleFramer = {
-            "หน้าหลัก2",
+            "หน้าหลัก",
             "สแกน QR Code",
             "รายการผลผลิต",
             "เพิ่มรายการผลผลิต",
             "ข้อมูลส่วนตัว",
+            "คู่มือการใช้งาน",
             "เกี่ยวกับเรา",
             "ออกจากระบบ"};
 
@@ -75,15 +79,17 @@ public class MenuDrawerFragment extends Fragment {
             R.drawable.ic_action_framer,
             R.drawable.ic_action_listframer,
             R.drawable.ic_action_register,
+            R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,
             R.drawable.ic_action_exitt};
 
     private String[] titleProduct = {
-            "หน้าหลัก3",
+            "หน้าหลัก",
             "สแกน QR Code",
             "รายการผลิตภัณฑ์",
             "เพิ่มรายการผลิตภัณฑ์",
             "ข้อมูลส่วนตัว",
+            "คู่มือการใช้งาน",
             "เกี่ยวกับเรา",
             "ออกจากระบบ"};
 
@@ -257,9 +263,17 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new ShowListMemberFragment()).commit();
                 break;
 
+//              คู่มือการใช้งาน
+            case 8:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ManualFragment()).commit();
+                break;
+
 
 //              ผู้พัฒนา
-            case 8:
+            case 9:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -267,7 +281,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              ออกจากระบบ
-            case 9:
+            case 10:
                 getActivity().finish();
                 break;
         }
@@ -315,8 +329,16 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
                 break;
 
-//                เกี่ยวกับเรา
+//              คู่มือการใช้งาน
             case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ManualFragment()).commit();
+                break;
+
+//                เกี่ยวกับเรา
+            case 6:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -324,7 +346,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //                ออกจากระบบ
-            case 6:
+            case 7:
                 getActivity().finish();
                 break;
         }
@@ -373,15 +395,23 @@ public class MenuDrawerFragment extends Fragment {
                         .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
                 break;
 
-//              เกี่ยวกับเรา
+//              คู่มือการใช้งาน
             case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ManualFragment()).commit();
+                break;
+
+//              เกี่ยวกับเรา
+            case 6:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
                 break;
 //              ออกจากระบบ
-            case 6:
+            case 7:
                 getActivity().finish();
                 break;
         }

@@ -1,15 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InfoLoginFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".InfoLoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textSize="@dimen/h1"
+<!--Content-->
+<ScrollView
+    android:layout_above="@id/btnAddProduct"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Info login" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</FrameLayout>
+        <!--Name-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ชื่อร้าน/ชื่อสวน :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <!--Fristname-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ชื่อ :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editFristname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <!--Surname-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="นามสกุล :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <!--Address-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ที่อยู่ :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="3" />
+
+        <!--Phone-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="เบอร์โทรศัพท์ :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
+
+        <!--User-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ผู้ใช้งาน :"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <!--Password-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="รหัสผ่าน: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <!--Type-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ประเภทผู้ใช้งาน: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/editType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:inputType="text" />
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+<!--Button Add-->
+<Button
+    android:layout_alignParentBottom="true"
+    android:id="@+id/btnUpload"
+    android:text="Upload To Server"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

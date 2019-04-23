@@ -13,44 +13,353 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
 
-        <!--Product Detail-->
-    <LinearLayout
-        android:layout_margin="15dp"
-        android:orientation="vertical"
+    <!--Content-->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <!--Title-->
-        <TextView
-            android:textSize="@dimen/h2"
-            android:textStyle="bold"
-            android:text="ผลิตภัณฑ์"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <!--Name-->
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="@dimen/h1"
-            android:text="ผลิตภัณฑ์"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <!--Image-->
-        <ImageView
-            android:id="@+id/imvImage"
-            android:layout_margin="10dp"
-            android:scaleType="centerInside"
+        <!--Product Detail-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="vertical">
+
+            <!--Title-->
+            <TextView
+                android:textColor="#009688"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ผลิตภัณฑ์"
+                android:textSize="@dimen/h2"
+                android:textStyle="bold" />
+
+            <!--ชื่อผลิตภัณฑ์-->
+            <TextView
+                android:layout_marginTop="15dp"
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ผลิตภัณฑ์"
+                android:textColor="#000000"
+                android:textSize="@dimen/h1"
+                android:textStyle="bold" />
+
+            <!--Image-->
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:id="@+id/imvImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:scaleType="centerInside" />
+
+            <!--จำนวน และ หน่วย-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:hint="จำนวน :"
+                    android:textColor="#6F000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtProductAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+                <TextView
+                    android:id="@+id/txtProductUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+            </LinearLayout>
+
+            <!--วันที่-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:hint="วันที่ผลิต :"
+                    android:textColor="#6F000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtProductdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-        <!--Framer Detail-->
+            <!--รายละเอียด-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="รายละเอียด :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-        <!--User Detail-->
+            <TextView
+                android:id="@+id/txtProductlist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
 
+            <!--ชื่อสวน-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ชื่อร้าน :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--ที่ตั้ง-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ที่ตั้ง :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtProductAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--เบอร์โทร-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="เบอร์โทรศัพท์ :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtProductPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+
+
+            <!--Framer Detail-->
+
+
+
+
+            <!--Title-->
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ผลผลิต"
+                android:textColor="#009688"
+                android:textSize="@dimen/h2"
+                android:textStyle="bold" />
+
+
+            <!--จำนวน และ หน่วย-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="ชื่อผลผลิต :"
+                    android:textColor="#6F000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFruit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+
+            </LinearLayout>
+
+
+            <!--จำนวน และ หน่วย-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:hint="จำนวน :"
+                    android:textColor="#6F000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFruitAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+                <TextView
+                    android:id="@+id/txtFruitUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+            </LinearLayout>
+
+            <!--วันที่-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:hint="วันที่ผลิต :"
+                    android:textColor="#6F000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFruitdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/h2" />
+
+
+            </LinearLayout>
+
+            <!--ชื่อสวน-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ชื่อสวน :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtFruitName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--ที่ตั้ง-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="ที่ตั้ง :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtFruitAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--เบอร์โทร-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="เบอร์โทรศัพท์ :"
+                android:textColor="#6F000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtFruitPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="@dimen/h2" />
+
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </LinearLayout>

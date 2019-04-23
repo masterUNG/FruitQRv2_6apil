@@ -4,7 +4,7 @@ import java.lang.ref.SoftReference;
 
 public class Myconstant {
 
-    private String[] favoriteFruits = {"โปรดเลือกชื่อผลไม้","ส้ม","มะละกอ", "แตงโม","ทุเรียน"};
+    private String[] favoriteFruits = {"โปรดเลือกผลไม้","ส้ม","มะละกอ", "แตงโม","ทุเรียน", "เงาะ", "มะม่วง", "เชอร์รี่", "สับปะรด", "ลำไย"};
     private String[] units = {"กิโลกรัม","ผล","ลัง"};
     private String[] columnDetailProduct = {"id", "idRecord", "NameRecord", "TypeRecord", "idFarmer",
                                                 "Name", "Detail", "Image", "Amount", "Unit", "Date", "QRcode"};
