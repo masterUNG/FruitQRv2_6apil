@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowListMemberFragment">
+    tools:context=".ShowMemberFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerShowListMember"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarMember"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="?attr/actionBarSize"/>
 
 </FrameLayout>

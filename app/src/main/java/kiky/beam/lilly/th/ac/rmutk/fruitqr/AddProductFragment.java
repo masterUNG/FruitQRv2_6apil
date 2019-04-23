@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Picture;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -360,7 +359,7 @@ public class AddProductFragment extends Fragment {
 
             }
 
-            ShowListFragmentAdapter showListFragmentAdapter = new ShowListFragmentAdapter(getActivity(),
+            ShowListFramerAdapter showListFramerAdapter = new ShowListFramerAdapter(getActivity(),
                     nameStringArrayList, amountStringArrayList, dateStringArrayList, ownerStringArrayList,
                     new OnClickItem() {
                         @Override
@@ -369,7 +368,7 @@ public class AddProductFragment extends Fragment {
 
                         }
                     });
-            recyclerView.setAdapter(showListFragmentAdapter);
+            recyclerView.setAdapter(showListFramerAdapter);
 
 
         } catch (Exception e) {

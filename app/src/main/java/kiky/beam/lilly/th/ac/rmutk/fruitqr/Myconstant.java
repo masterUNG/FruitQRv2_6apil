@@ -13,6 +13,8 @@ public class Myconstant {
 
     private String nameFileSharePreference = "Fruit";
 
+    private String urlgetAllDataOrderByDesc = "http://www.androidthai.in.th/rmutk/getAllDataOrderByDesc.php";
+
 //    private String urlGetUserWhereId = "https://www.androidthai.in.th/rmutk/getUserWhereId.php";
     private String urlGetFramerWhereId = "http://androidthai.in.th/rmutk/getFarmerWhereId.php";//ดึงค่าฟามเมอร์ในรายละเอียดผลิตภัณฑ์
     private String urlGetProductWhereId = "http://www.androidthai.in.th/rmutk/getProductrWhereId.php"; //
@@ -31,6 +33,9 @@ public class Myconstant {
     private String urlGetDetailFramerWhereIdRecord = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordLilly.php"; //ดูได้แค่ผู้ผลิค
     private String urlGetAllDetailFramer = "http://www.androidthai.in.th/rmutk/getAllDetaiFramerLilly.php"; //Admin ดูได้ทั้งหมด DetailFramer
 
+    public String getUrlgetAllDataOrderByDesc() {
+        return urlgetAllDataOrderByDesc;
+    }
 
     public String[] getColumnUser() {
         return columnUser;

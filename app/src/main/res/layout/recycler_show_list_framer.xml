@@ -44,7 +44,7 @@
                 android:id="@+id/txtAmount"
                 android:textStyle="bold"
                 android:textSize="@dimen/h2"
-                android:text="Amount = 123 กิโลกรัม"
+                android:text="จำนวน = 123 กิโลกรัม"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

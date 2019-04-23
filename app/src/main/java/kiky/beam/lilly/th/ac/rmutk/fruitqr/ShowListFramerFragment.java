@@ -8,12 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,14 +89,14 @@ public class ShowListFramerFragment extends Fragment {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(linearLayoutManager);
 
-            ShowListFragmentAdapter showListFragmentAdapter = new ShowListFragmentAdapter(getActivity(), nameStringArrayList,
+            ShowListFramerAdapter showListFramerAdapter = new ShowListFramerAdapter(getActivity(), nameStringArrayList,
                     amountStringArrayList, dateStringArrayList, nameOwnerStringArrayList, new OnClickItem() {//กด ctrl+p
                 @Override
                 public void onClickitem(View view, int position) {
 
                 }
             });
-            recyclerView.setAdapter(showListFragmentAdapter);
+            recyclerView.setAdapter(showListFramerAdapter);
 
 
         }catch (Exception e){

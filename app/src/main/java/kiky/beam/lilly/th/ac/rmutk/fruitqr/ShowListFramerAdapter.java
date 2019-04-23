@@ -10,19 +10,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ShowListFragmentAdapter extends  RecyclerView.Adapter<ShowListFragmentAdapter.ShowListFramerViewHolder>{
+public class ShowListFramerAdapter extends  RecyclerView.Adapter<ShowListFramerAdapter.ShowListFramerViewHolder>{
 
     private Context context;
     private ArrayList<String> nameStringArrayList, amountStringArrayList, dateStringArrayList, nameOwnerStringArrayList;
     private OnClickItem onClickItem;
     private LayoutInflater layoutInflater;
 
-    public ShowListFragmentAdapter(Context context,
-                                   ArrayList<String> nameStringArrayList,
-                                   ArrayList<String> amountStringArrayList,
-                                   ArrayList<String> dateStringArrayList,
-                                   ArrayList<String> nameOwnerStringArrayList,
-                                   OnClickItem onClickItem) {
+    public ShowListFramerAdapter(Context context,
+                                 ArrayList<String> nameStringArrayList,
+                                 ArrayList<String> amountStringArrayList,
+                                 ArrayList<String> dateStringArrayList,
+                                 ArrayList<String> nameOwnerStringArrayList,
+                                 OnClickItem onClickItem) {
         this.layoutInflater = LayoutInflater.from(context);
         this.nameStringArrayList = nameStringArrayList;
         this.amountStringArrayList = amountStringArrayList;
@@ -52,9 +52,9 @@ public class ShowListFragmentAdapter extends  RecyclerView.Adapter<ShowListFragm
 
 
         showListFramerViewHolder.nameTextView.setText(name);
-        showListFramerViewHolder.amountTextView.setText("Amount = " + amountAndUnit);
+        showListFramerViewHolder.amountTextView.setText("จำนวน : " + amountAndUnit);
         showListFramerViewHolder.dateTextView.setText(date);
-        showListFramerViewHolder.nameOwnerTextView.setText("Owner : " + nameOwer);
+        showListFramerViewHolder.nameOwnerTextView.setText("เจ้าของผลผลิต : " + nameOwer);
         //กดคลิกหน้าเพิ่มผลิตภัณฑ์
         showListFramerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
