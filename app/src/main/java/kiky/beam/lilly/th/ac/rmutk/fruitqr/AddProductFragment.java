@@ -51,11 +51,12 @@ import it.sauronsoftware.ftp4j.FTPDataTransferListener;
  */
 public class AddProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image, Amount, Unit, Date, QRcode;
+    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image = "https://www.androidthai.in.th/rmutk/Picture/product.png"
+            , Amount, Unit, Date, QRcode;
 
     private ImageView imageView;
     private Uri uri;
-    private boolean picABoolean = true;
+    private boolean picABoolean = true; // ถ้าเค้าไม่มีการเลือกรูปภาพจะไม่เออเร่อ
 
 
     public AddProductFragment() {
@@ -176,6 +177,7 @@ public class AddProductFragment extends Fragment {
 
                 } else if (picABoolean) {
                     Image = myconstant.getUrlProductPic();
+                    upDataMySQL(); //ถ้าไม่เลือกรูปภาพ ให้ขึ้นภาพในเมธอดนี้แทน
                 } else {
 
                     //หาตำแหน่ง path ของรูป เพื่ออัพเดต
@@ -218,15 +220,7 @@ public class AddProductFragment extends Fragment {
                         Log.d("18AprilV2", "Image ==>> " + Image);
 
                         //เพิ่มข้อมูลขึ้นฐานข้อมูล
-                        AddDetailProductThread addDetailProductThread = new AddDetailProductThread(getActivity());
-                        addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idFarmer, Name,
-                                Detail, Image, Amount, Unit, Date, QRcode, myconstant.getUrlAddDetailProduct());
-                        String result = addDetailProductThread.get();
-                        Log.d(tag, "result ==>>> " + result);
-
-                        if (Boolean.parseBoolean(result)) {
-                            goToProductList();
-                        }
+                        upDataMySQL();
 
 
                     } catch (Exception e) {
@@ -247,6 +241,23 @@ public class AddProductFragment extends Fragment {
         });
 
 
+    }
+
+    private void upDataMySQL(){
+
+        try {
+            AddDetailProductThread addDetailProductThread = new AddDetailProductThread(getActivity());
+            addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idFarmer, Name,
+                    Detail, Image, Amount, Unit, Date, QRcode, myconstant.getUrlAddDetailProduct());
+            String result = addDetailProductThread.get();
+
+            if (Boolean.parseBoolean(result)) {
+                goToProductList();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToProductList() {

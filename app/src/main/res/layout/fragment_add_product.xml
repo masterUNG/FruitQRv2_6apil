@@ -46,12 +46,12 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:layout_gravity="start"
-                android:lines="3"
                 android:id="@+id/edtDetailProduct"
-                android:hint="รายละเอียดของผลิตภั์ฑ์"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:hint="รายละเอียดของผลิตภัณฑ์"
+                android:lines="3" />
 
             <ImageView
                 android:src="@drawable/product"

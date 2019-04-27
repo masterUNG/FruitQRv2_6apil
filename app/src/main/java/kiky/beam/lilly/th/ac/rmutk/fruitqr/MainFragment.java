@@ -54,7 +54,7 @@ public class MainFragment extends Fragment {
     private void checkStatus() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
-        builder.setTitle("กรุณาเลือกงานทำงาน");
+        builder.setTitle("กรุณาเลือกการทำงาน");
         builder.setMessage("โปรดเลือกการทำงานแอพพลิเคชัน ?");
         builder.setNegativeButton("QR code", new DialogInterface.OnClickListener() {
             @Override
