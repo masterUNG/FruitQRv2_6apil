@@ -54,8 +54,8 @@ public class MainFragment extends Fragment {
     private void checkStatus() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
-        builder.setTitle("Choose Work");
-        builder.setMessage("Please Choose Work ?");
+        builder.setTitle("กรุณาเลือกงานทำงาน");
+        builder.setMessage("โปรดเลือกการทำงานแอพพลิเคชัน ?");
         builder.setNegativeButton("QR code", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -63,7 +63,7 @@ public class MainFragment extends Fragment {
                 getActivity().finish();
             }
         });
-        builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("เข้าสู่ระบบ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -88,7 +88,7 @@ public class MainFragment extends Fragment {
 
                 MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
                 if (user.isEmpty() || password.isEmpty()) {
-                    myAlertDialog.normalDialog("Have Space", "Plase Fill Every Blank");
+                    myAlertDialog.normalDialog("กรุณากรอกข้อมูลให้ครบ", "โปรดกรอกข้อมูลให้ครบ");
                 } else {
 
                  //   Check Authen
@@ -117,9 +117,9 @@ public class MainFragment extends Fragment {
                         }
 
                         if (b){
-                            myAlertDialog.normalDialog("User False", "No This User in My Database");
+                            myAlertDialog.normalDialog("กรุณาตรวจสอบชื่อผู้ใช้งานให้ถูกต้อง", "ไม่มีผู้ใช้งานนี้อยู่ในระบบ");
                         }else if (password.equals(truePassword)) {
-                            Toast.makeText(getActivity(),"Welcome"+name,Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(getActivity(),"Welcome  "+name,Toast.LENGTH_SHORT).show();;
                             //ฝัง idlogin ในแอพ
                             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -135,7 +135,7 @@ public class MainFragment extends Fragment {
                             getActivity().finish(); //คำสั่งปิดแอพ
 
                         }else{
-                            myAlertDialog.normalDialog("Password False","Please Try Again Password False");
+                            myAlertDialog.normalDialog("กรุณาตรวจสอบรหัสผ่านให้ถูกต้อง","โปรดตรวจสอบรหัสผ่านอีกครั้ง");
 
                         }
 

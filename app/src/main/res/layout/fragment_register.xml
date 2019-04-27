@@ -30,7 +30,14 @@
                     android:id="@+id/editName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name :"
+                    android:hint="ชื่อร้าน/ชื่อสวน :"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/editFirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ชื่อร้าน/ชื่อสวน :"
                     android:inputType="text" />
 
                 <!--Surname-->

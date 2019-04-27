@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AboutMeFragment">
 
     <LinearLayout
@@ -27,8 +28,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="เกี่ยวกับเรา"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 android:textColor="@color/colorAA"
-                android:textSize="@dimen/h2" />
+                app:fontFamily="@font/fonts1"/>
 
             <!--ช่องว่าง-->
             <LinearLayout
@@ -45,7 +48,8 @@
                 android:layout_gravity="center"
                 android:text="ระบบจัดการห่วงโซ่อุปทานอิเล็กทรอนิกส์สำหรับผลิตภัณฑ์ชุมชน กรณีศึกษากลุ่มนำร่องชุมชนบ้านบึง อำเภอบ้านคา จังหวัดราชบุรี"
                 android:textColor="@color/colorAA"
-                android:textSize="@dimen/h2" />
+                android:textSize="30dp"
+                app:fontFamily="@font/fonts1"/>
 
             <!--ช่องว่าง-->
             <LinearLayout

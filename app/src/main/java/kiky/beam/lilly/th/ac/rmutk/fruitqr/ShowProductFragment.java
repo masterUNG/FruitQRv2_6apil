@@ -134,6 +134,11 @@ public class ShowProductFragment extends Fragment {
             ImageView imageView = getView().findViewById(R.id.imvImage);
             Picasso.get().load(productStringArrayList.get(7)).resize(800,600).into(imageView);
 
+//          name product
+            TextView nameeTextView = getView().findViewById(R.id.txtNamee);
+            nameeTextView.setText(productStringArrayList.get(5));
+
+
 //          Amount Product
             TextView productamountTextView = getView().findViewById(R.id.txtProductAmount);
             productamountTextView.setText(productStringArrayList.get(8));
@@ -168,6 +173,10 @@ public class ShowProductFragment extends Fragment {
 //            Name Fruit
             TextView fruitTextView = getView().findViewById(R.id.txtFruit);
             fruitTextView.setText(framerStringArrayList.get(2));
+
+//          name Fruit
+            TextView fruittTextView = getView().findViewById(R.id.txtFruitt);
+            fruittTextView.setText(framerStringArrayList.get(2));
 
 //          Amount Fruit
             TextView fruitamountTextView = getView().findViewById(R.id.txtFruitAmount);

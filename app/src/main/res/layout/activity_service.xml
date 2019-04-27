@@ -48,13 +48,13 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            android:src="@drawable/welcome" />
+            android:src="@drawable/logoo" />
 
         <TextView
             android:layout_marginLeft="8dp"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
-            android:text="Menu :"
+            android:text="เมณู :"
             android:textSize="24sp"
             android:textStyle="bold" />
 
