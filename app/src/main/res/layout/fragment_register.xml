@@ -15,9 +15,9 @@
 
         <!--Content-->
         <ScrollView
-            android:layout_above="@+id/btnUpload"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnUpload">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                     android:id="@+id/editFirstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="ชื่อร้าน/ชื่อสวน :"
+                    android:hint="ชื่อ :"
                     android:inputType="text" />
 
                 <!--Surname-->
@@ -45,17 +45,17 @@
                     android:id="@+id/editSurname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Surname :"
+                    android:hint="นามสกุล :"
                     android:inputType="text" />
 
                 <!--Address-->
                 <EditText
                     android:id="@+id/editAddress"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Address :"
+                    android:gravity="top"
+                    android:hint="ที่อยู่ :"
+                    android:inputType="textMultiLine"
                     android:lines="3" />
 
                 <!--Phone-->
@@ -63,7 +63,7 @@
                     android:id="@+id/editPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Phone :"
+                    android:hint="เบอร์โทรศัพท์ :"
                     android:inputType="phone" />
 
                 <!--User-->
@@ -71,7 +71,7 @@
                     android:id="@+id/editUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="User :"
+                    android:hint="ผู้ใช้งาน :"
                     android:inputType="text" />
 
                 <!--Password-->
@@ -79,7 +79,7 @@
                     android:id="@+id/editPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password: "
+                    android:hint="รหัสผ่าน: "
                     android:inputType="text" />
 
                 <!--Group User-->
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Type User"
+                    android:text="ประเภทผู้ใช้งาน"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -99,22 +99,29 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/radAdmin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin" />
+
+                    <RadioButton
+                        android:id="@+id/radFarmer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Farmer" />
+
+                    <RadioButton
                         android:id="@+id/radProduct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Product" />
 
                     <RadioButton
-                        android:id="@+id/radSales"
+                        android:id="@+id/redFarmerandProduct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sales" />
-
-                    <RadioButton
-                        android:id="@+id/radCustomer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Customer" />
+                        android:text="Farmer and Product"
+                        android:layout_marginBottom="40dp"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -123,10 +130,10 @@
 
         <Button
             android:id="@+id/btnUpload"
-            android:layout_alignParentBottom="true"
-            android:text="Upload To Server"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="บันทึกลงฐานข้อมูล" />
 
     </RelativeLayout>
 

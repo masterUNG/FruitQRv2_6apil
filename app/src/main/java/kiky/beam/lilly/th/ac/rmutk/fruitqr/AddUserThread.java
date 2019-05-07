@@ -26,15 +26,16 @@ public class AddUserThread extends AsyncTask<String, Void, String> {
             RequestBody requestBody = new FormEncodingBuilder()
                     .add("isAdd","true")
                     .add("Name",strings[0])
-                    .add("Surname",strings[1])
-                    .add("Address",strings[2])
-                    .add("Phone",strings[3])
-                    .add("User",strings[4])
-                    .add("Password",strings[5])
-                    .add("TypeUser",strings[6])
+                    .add("FirstName",strings[1])
+                    .add("SecondName",strings[2])
+                    .add("Address",strings[3])
+                    .add("Phone",strings[4])
+                    .add("User",strings[5])
+                    .add("Password",strings[6])
+                    .add("TypeUser",strings[7])
                     .build();
             Request.Builder builder = new Request.Builder();
-            Request request = builder.url(strings[7]).post(requestBody).build();
+            Request request = builder.url(strings[8]).post(requestBody).build();
             Response response = okHttpClient.newCall(request).execute();
             return  response.body().string();
 

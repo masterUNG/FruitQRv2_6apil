@@ -91,6 +91,7 @@
             <!--android:paddingTop="80dp"-->
 
             <Button
+                android:text="Set Date"
                 android:layout_marginRight="10dp"
                 android:id="@+id/btnSetDate"
                 android:background="@drawable/calendar"

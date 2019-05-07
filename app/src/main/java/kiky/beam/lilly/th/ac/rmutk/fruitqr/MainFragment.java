@@ -37,7 +37,8 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        Check Status
+//        เช็คสถานะ
+
         checkStatus();
 
 //        Register Controllor //เป็นการคลิกปุ่ม

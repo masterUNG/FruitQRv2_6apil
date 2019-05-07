@@ -15,7 +15,7 @@ public class ProductActivity extends AppCompatActivity {
 
 //        Get Value Frome Intent
         idProduct = getIntent().getStringExtra("idProduct");
-        Log.d("18AprilV2", "idProduct ==> " + idProduct);
+        Log.d("27AprilV3", "idProduct Activity ==> " + idProduct);
 
         if(savedInstanceState == null){ //==
             getSupportFragmentManager()

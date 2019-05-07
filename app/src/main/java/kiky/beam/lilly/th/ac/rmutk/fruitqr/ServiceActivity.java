@@ -65,7 +65,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     private String showType(String typeUserString) {
 
-        String[] strings = {"", "Admin", "Farmer", "Product", "Customer"};
+        String[] strings = {"", "Admin", "Farmer", "Product", "Farmer and Product"};
         try {
 
             int index = Integer.parseInt(typeUserString.trim());

@@ -29,7 +29,7 @@
         <EditText
             android:id="@+id/edtUser"
             android:inputType="text"
-            android:hint="ผู้ใช้งาน :"
+            android:hint="ชื่อผู้ใช้งาน :"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

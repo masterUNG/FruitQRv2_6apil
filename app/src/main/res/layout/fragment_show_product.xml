@@ -97,7 +97,14 @@
                     app:fontFamily="@font/fonts1"/>
 
 
+
             </LinearLayout>
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--จำนวน และ หน่วย-->
             <LinearLayout
@@ -137,6 +144,13 @@
 
             </LinearLayout>
 
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <!--วันที่-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,7 +161,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.4"
                     android:text="วันที่ผลิต  : "
                     android:textColor="#000000"
                     android:textSize="24dp"
@@ -165,6 +179,13 @@
 
 
             </LinearLayout>
+
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--รายละเอียด-->
             <TextView
@@ -185,6 +206,12 @@
                 android:textColor="#000000"
                 android:textSize="26dp"
                 app:fontFamily="@font/fonts1"/>
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--ชื่อร้าน-->
             <TextView
@@ -206,6 +233,13 @@
                 android:textSize="26dp"
                 app:fontFamily="@font/fonts1"/>
 
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <!--ที่ตั้ง-->
             <TextView
                 android:layout_width="wrap_content"
@@ -225,6 +259,12 @@
                 android:textColor="#000000"
                 android:textSize="26dp"
                 app:fontFamily="@font/fonts1"/>
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--เบอร์โทร-->
             <TextView
@@ -246,6 +286,7 @@
                 android:textSize="26dp"
                 app:fontFamily="@font/fonts1"/>
 
+            <!--Line ทำเส้น-->
             <!--Line ทำเส้น-->
             <View
                 android:layout_marginTop="10dp"
@@ -319,6 +360,13 @@
 
             </LinearLayout>
 
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <!--จำนวน และ หน่วย-->
             <LinearLayout
                 android:layout_marginTop="18dp"
@@ -355,6 +403,12 @@
                     app:fontFamily="@font/fonts1"/>
 
             </LinearLayout>
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--วันที่-->
             <LinearLayout
@@ -384,6 +438,12 @@
 
 
             </LinearLayout>
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--ชื่อสวน-->
             <TextView
@@ -396,6 +456,7 @@
                 android:textStyle="bold"
                 app:fontFamily="@font/fonts1"/>
 
+
             <TextView
                 android:id="@+id/txtFruitName"
                 android:layout_width="wrap_content"
@@ -403,6 +464,13 @@
                 android:textColor="#000000"
                 android:textSize="@dimen/h2"
                 app:fontFamily="@font/fonts1"/>
+
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--ที่ตั้ง-->
             <TextView
@@ -422,6 +490,13 @@
                 android:textColor="#000000"
                 android:textSize="26dp"
                 app:fontFamily="@font/fonts1"/>
+
+            <!--Line ทำเส้น-->
+            <View
+                android:layout_marginTop="10dp"
+                android:background="#CEC8C8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
             <!--เบอร์โทร-->
             <TextView
@@ -453,4 +528,5 @@
 
 
     </ScrollView>
+
 </LinearLayout>

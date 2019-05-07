@@ -1,7 +1,9 @@
 package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,9 @@ import java.util.ArrayList;
 public class ShowListProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
 
+    private String idType, idLogin;
+
+
 
     public ShowListProductFragment() {
         // Required empty public constructor
@@ -35,6 +40,9 @@ public class ShowListProductFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
+        idType = sharedPreferences.getString("TypeUser", "1");
+        idLogin = sharedPreferences.getString("idLogin", "1");
 
 //      Create RecylerView
         createRecylerView();
@@ -51,11 +59,19 @@ public class ShowListProductFragment extends Fragment {
 
         try {
 
-            GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
-            getAllDataThread.execute(myconstant.getUrlGetAllDeatailProduct());
+            String jsonString = null;
 
-            String jsonString = getAllDataThread.get();
-            Log.d("AprilV1", jsonString);
+            if (Integer.parseInt(idType) == 1) {
+                GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
+                getAllDataThread.execute(myconstant.getUrlGetAllDeatailProduct());
+
+                jsonString = getAllDataThread.get();
+                Log.d("AprilV1", jsonString);
+            } else {
+                GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
+                getDataWhereOneColumn.execute("idRecord", idLogin, myconstant.getUrlGetProductWhereIdRecord());
+                jsonString = getDataWhereOneColumn.get();
+            }
 
             ArrayList<String> nameStringArratList = new ArrayList<>();
             ArrayList<String> dateStringArratList = new ArrayList<>();
@@ -64,41 +80,45 @@ public class ShowListProductFragment extends Fragment {
             ArrayList<String> iconStringArratList = new ArrayList<>();
             final ArrayList<String> idDetailProductStringArratList = new ArrayList<>();
 
+            Log.d("27AprilV3", "Json ==> " + jsonString);
 
             JSONArray jsonArray = new JSONArray(jsonString);
             for (int i = 0; i < jsonArray.length(); i += 1) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            nameStringArratList.add(jsonObject.getString("Name"));
-            dateStringArratList.add(jsonObject.getString("Date"));
-            amountStringArratList.add(jsonObject.getString("Amount"));
-            unitStringArratList.add(jsonObject.getString("Unit"));
-            iconStringArratList.add(jsonObject.getString("Image"));
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                nameStringArratList.add(jsonObject.getString("Name"));
+                dateStringArratList.add(jsonObject.getString("Date"));
+                amountStringArratList.add(jsonObject.getString("Amount"));
+                unitStringArratList.add(jsonObject.getString("Unit"));
+                iconStringArratList.add(jsonObject.getString("Image"));
                 idDetailProductStringArratList.add(jsonObject.getString("id"));
+
                 Log.d("18AprilC1", iconStringArratList.get(i));
 
-        }
-
-        ShowListAdapter showListAdapter = new ShowListAdapter(getActivity(), nameStringArratList,
-                dateStringArratList, amountStringArratList, unitStringArratList, iconStringArratList, new OnClickItem() {
-            @Override //กดที่รายการ จะเข้าไปดูรายละเอัยด
-            public void onClickitem(View view, int position) {
-                Log.d("18AprilV1", "Position ==> " + position);
-
-                Intent intent = new Intent(getActivity(), ProductActivity.class);
-                intent.putExtra("idProduct", idDetailProductStringArratList.get(position));
-                startActivity(intent);
-
-
             }
-        });
+
+            ShowListAdapter showListAdapter = new ShowListAdapter(getActivity(), nameStringArratList,
+                    dateStringArratList, amountStringArratList, unitStringArratList, iconStringArratList, new OnClickItem() {
+                @Override //กดที่รายการ จะเข้าไปดูรายละเอัยด
+                public void onClickitem(View view, int position) {
+                    Log.d("18AprilV1", "Position ==> " + position);
+
+                    Intent intent = new Intent(getActivity(), ProductActivity.class);
+                    intent.putExtra("idProduct", idDetailProductStringArratList.get(position));
+                    startActivity(intent);
+
+
+                }
+            });
             recyclerView.setAdapter(showListAdapter);
 
 
         } catch (Exception e) {
-            Log.d("18AprilV1", "e ==> " + e.toString());
+            Log.d("27AprilV3", "e ==> " + e.toString());
         }
 
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

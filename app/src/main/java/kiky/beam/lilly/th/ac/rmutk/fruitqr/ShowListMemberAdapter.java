@@ -3,6 +3,7 @@ package kiky.beam.lilly.th.ac.rmutk.fruitqr;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,12 @@ public class ShowListMemberAdapter extends RecyclerView.Adapter<ShowListMemberAd
     private ArrayList<String> nameStringArratList, firstnameStringArratList, secondnameStringArratList, phoneStringArratList, typeStringArrayList;
     private OnClickItem onClickItem;
     private LayoutInflater layoutInflater;
+
+//    private ArrayList<String> stringArrayList = new ArrayList<>();
+//    private String[] typeUsers = {"", "Admin", "Farmer", "Product", "Farmer and Product"};
+//    private String typeUserSting;
+
+
 
     public ShowListMemberAdapter(Context context,
                                  ArrayList<String> nameStringArratList,
@@ -46,6 +53,12 @@ public class ShowListMemberAdapter extends RecyclerView.Adapter<ShowListMemberAd
 
     @Override
     public void onBindViewHolder(@NonNull final ShowListMemberViewHolder showListMemberViewHolder, int i) {
+
+//        typeUserSting = typeUsers[Integer.parseInt(typeStringArrayList.get(8))];
+//        Log.d("27AprilV2", "typeUser ==> " + typeUserSting);
+
+
+
         String name = nameStringArratList.get(i);
         String firstname = firstnameStringArratList.get(i);
         String secondname = secondnameStringArratList.get(i);

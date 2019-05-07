@@ -32,6 +32,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.qrcode.encoder.QRCode;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -57,6 +59,8 @@ public class AddProductFragment extends Fragment {
     private ImageView imageView;
     private Uri uri;
     private boolean picABoolean = true; // ถ้าเค้าไม่มีการเลือกรูปภาพจะไม่เออเร่อ
+
+    private String idDeleteDetailFarmerString;
 
 
     public AddProductFragment() {
@@ -89,10 +93,40 @@ public class AddProductFragment extends Fragment {
 
     private void qrController() { // Random
         TextView textView = getView().findViewById(R.id.txtQRcode);
-        Random random = new Random();
-        int i = random.nextInt(10000);
-        QRcode = "product" + Integer.toString(i);
+//        Random random = new Random();
+//        int i = random.nextInt(10000);
+//        QRcode = "product" + Integer.toString(i);
+
+        //เรียง id + date
+        QRcode = "ID" + findIdDetailProduct() + Date;
         textView.setText(QRcode);
+    }
+
+    private String findIdDetailProduct() {
+
+        String result = null;
+        try {
+            //ค้นหาid ให้คิวอาร์โค้ด
+            GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
+            getAllDataThread.execute(myconstant.getUrlGetAllDeatailProduct());
+
+            String jsonString = getAllDataThread.get();
+            JSONArray jsonArray = new JSONArray(jsonString);
+            JSONObject jsonObject = jsonArray.getJSONObject(0); //ตำแหน่งที่ 0
+            result = jsonObject.getString("id");
+            int i = Integer.parseInt(result); //เอาค่า id มาเป็นตัวเลข
+            i = i + 1; //เพิ่มค่าทีละ1
+            result = Integer.toString(i);
+
+            return result;
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     private void unitController() {
@@ -246,6 +280,14 @@ public class AddProductFragment extends Fragment {
     private void upDataMySQL(){
 
         try {
+
+//            //ลบผลผลิตออกก่อน
+//            GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
+//            getDataWhereOneColumn.execute("id", idDeleteDetailFarmerString, myconstant.getUrlDeleteDetailFarmerWhereId());
+//            String resultDelete = getDataWhereOneColumn.get();
+//            Log.d("27AprilV1", "trsult ==> " + resultDelete);
+
+            //อัพโหลด
             AddDetailProductThread addDetailProductThread = new AddDetailProductThread(getActivity());
             addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idFarmer, Name,
                     Detail, Image, Amount, Unit, Date, QRcode, myconstant.getUrlAddDetailProduct());
@@ -376,9 +418,12 @@ public class AddProductFragment extends Fragment {
                         @Override
                         public void onClickitem(View view, int position) {
                             confirmFruit(nameStringArrayList.get(position), idStringArrayList.get(position));
+                           //ลบผลผลิต
+                            idDeleteDetailFarmerString = idStringArrayList.get(position);
 
                         }
                     });
+
             recyclerView.setAdapter(showListFramerAdapter);
 
 

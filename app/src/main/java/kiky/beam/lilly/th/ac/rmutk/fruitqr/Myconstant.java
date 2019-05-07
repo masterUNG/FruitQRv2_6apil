@@ -4,19 +4,27 @@ import java.lang.ref.SoftReference;
 
 public class Myconstant {
 
-    private String[] favoriteFruits = {"โปรดเลือกผลไม้","ส้ม","มะละกอ", "แตงโม","ทุเรียน", "เงาะ", "มะม่วง", "เชอร์รี่", "สับปะรด", "ลำไย"};
-    private String[] units = {"กิโลกรัม","ผล","ลัง"};
+    private String[] favoriteFruits = {"โปรดเลือกผลไม้","กล้วย","ส้ม","มะละกอ", "แตงโม","ทุเรียน", "เงาะ", "มะม่วง", "เชอร์รี่", "สับปะรด", "ลำไย"};
+    private String[] units = {"กล่อง","ขีด","กรัม","กิโลกรัม","ด้าม","ผล","ลัง","หวี"};
     private String[] columnDetailProduct = {"id", "idRecord", "NameRecord", "TypeRecord", "idFarmer",
                                                 "Name", "Detail", "Image", "Amount", "Unit", "Date", "QRcode"};
     private String[] columnDetailFramer = {"id", "idRecord", "Name", "Amount", "Unit", "Date", "Namesend"};
     private String[] columnUser = {"id", "Name", "FirstName", "SecondName", "Address", "Phone", "User", "Password", "TypeUser"};
+    private String[] columnUserFarmer = {"id", "Name", "FirstName", "SecondName", "Address", "Phone", "User", "Password", "TypeUser"};
+
 
     private String nameFileSharePreference = "Fruit";
+
+    private String urlEditUserWhereId = "http://www.androidthai.in.th/rmutk/editUserWhereId.php"; //แก้ไข
+
+    private String urlDeleteDetailFarmerWhereId = "http://www.androidthai.in.th/rmutk/deleteDatailFarmeWhereIdlilly.php"; //ลบผลผลิตออก
 
     private String urlgetAllDataOrderByDesc = "http://www.androidthai.in.th/rmutk/getAllDataOrderByDesc.php";
 
 //    private String urlGetUserWhereId = "https://www.androidthai.in.th/rmutk/getUserWhereId.php";
     private String urlGetFramerWhereId = "http://androidthai.in.th/rmutk/getFarmerWhereId.php";//ดึงค่าฟามเมอร์ในรายละเอียดผลิตภัณฑ์
+
+    private String urlGetProductWhereIdRecord = "http://www.androidthai.in.th/rmutk/getProductrWhereIdRecord.php"; //where IdRecord
     private String urlGetProductWhereId = "http://www.androidthai.in.th/rmutk/getProductrWhereId.php"; //
     private String urlGetAllDeatailProduct = "http://www.androidthai.in.th/rmutk/getDetailProduct.php";//รายละเอียดผลิตภัณฑ์
     private String urlAddDetailProduct = "http://www.androidthai.in.th/rmutk/addDetailProductLilly.php"; //เพิ่มผลิตภัณฑ์
@@ -32,6 +40,23 @@ public class Myconstant {
 
     private String urlGetDetailFramerWhereIdRecord = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordLilly.php"; //ดูได้แค่ผู้ผลิค
     private String urlGetAllDetailFramer = "http://www.androidthai.in.th/rmutk/getAllDetaiFramerLilly.php"; //Admin ดูได้ทั้งหมด DetailFramer
+
+
+    public String getUrlEditUserWhereId() {
+        return urlEditUserWhereId;
+    }
+
+    public String[] getColumnUserFarmer() {
+        return columnUserFarmer;
+    }
+
+    public String getUrlGetProductWhereIdRecord() {
+        return urlGetProductWhereIdRecord;
+    }
+
+    public String getUrlDeleteDetailFarmerWhereId() {
+        return urlDeleteDetailFarmerWhereId;
+    }
 
     public String getUrlgetAllDataOrderByDesc() {
         return urlgetAllDataOrderByDesc;

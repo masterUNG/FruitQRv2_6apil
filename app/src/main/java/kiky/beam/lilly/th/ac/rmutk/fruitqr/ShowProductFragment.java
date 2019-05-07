@@ -28,7 +28,7 @@ public class ShowProductFragment extends Fragment {
     private String idProduct;
     private String titleToolbar = "รายละเอียดผลิตภัณฑ์";
     //เรียก Table 3 ชุด
-    private ArrayList<String> productStringArrayList, framerStringArrayList, userStringArrayList;
+    private ArrayList<String> productStringArrayList, framerStringArrayList, userStringArrayList, userFramerStringArrayList;
     private Myconstant myconstant = new Myconstant(); //php
 
 
@@ -50,7 +50,7 @@ public class ShowProductFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         idProduct = getArguments().getString("idProduct");
-        Log.d("18AprilV2", "Receive idProduct ==> " + idProduct);
+        Log.d("27AprilV3", "Receive idProduct in Fragment ==> " + idProduct);
 
         //สร้าง Toolbar
         createToolbar();
@@ -64,6 +64,7 @@ public class ShowProductFragment extends Fragment {
         productStringArrayList = new ArrayList<>();
         framerStringArrayList = new ArrayList<>();
         userStringArrayList = new ArrayList<>();
+        userFramerStringArrayList  = new ArrayList<>();
 
         String[] columnDetailProduct = myconstant.getColumnDetailProduct(); //ดึงค่าจาก myconstane
 
@@ -88,7 +89,7 @@ public class ShowProductFragment extends Fragment {
             GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
             getDataWhereOneColumn.execute("id", idProduct, myconstant.getUrlGetProductWhereId());
             String jsonProduct = getDataWhereOneColumn.get();
-            Log.d("18AprilV3", "jsonProduct ==>>> " + jsonProduct);
+            Log.d("27AprilV3", "jsonProduct ==>>> " + jsonProduct);
 
             JSONArray jsonArray = new JSONArray(jsonProduct);
             JSONObject jsonObject = jsonArray.getJSONObject(0);
@@ -97,11 +98,13 @@ public class ShowProductFragment extends Fragment {
                 Log.d("18AprilV3", "productStringArrayList[" + i + "] ==> " + productStringArrayList.get(i));
             }
 
+            Log.d("27ApriV4", "id Sent ==> " + productStringArrayList.get(4));
+
             //สำหรับ Framer
             GetDataWhereOneColumn getDataWhereOneColumn1 = new GetDataWhereOneColumn(getActivity());
             getDataWhereOneColumn1.execute("id", productStringArrayList.get(4), myconstant.getUrlGetFramerWhereId()); //อยู่ในตำแหน่งที่ 4 idFramer
             String jsonFramer = getDataWhereOneColumn1.get();
-            Log.d("18AprilV4", "jsonFramer ==>>> " + jsonFramer);
+            Log.d("27AprilV4", "jsonFramer ==>>> " + jsonFramer);
             String[] columnDetailFramer = myconstant.getColumnDetailFramer();
 
             JSONArray jsonArray1 = new JSONArray(jsonFramer);
@@ -115,7 +118,7 @@ public class ShowProductFragment extends Fragment {
             GetDataWhereOneColumn getDataWhereOneColumn2 = new GetDataWhereOneColumn(getActivity());
             getDataWhereOneColumn2.execute("id", productStringArrayList.get(1),myconstant.getUrlGetUserWhereId());
             String jsonUser = getDataWhereOneColumn2.get();
-            Log.d("18AprilV5", "jsonUser ==>>> " + jsonUser);
+            Log.d("27AprilV5", "jsonUser ==>>> " + jsonUser);
 
             JSONArray jsonArray2 = new JSONArray(jsonUser);
             JSONObject jsonObject2 = jsonArray2.getJSONObject(0);
@@ -124,6 +127,24 @@ public class ShowProductFragment extends Fragment {
                 userStringArrayList.add(jsonObject2.getString(columnUser[i]));
                 Log.d("18AprilV5", "userStringArrayList[" + i + "] ==> " + userStringArrayList.get(i));
             }
+
+
+
+//            //สำหรับ Framer
+//            GetDataWhereOneColumn getDataWhereOneColumn3 = new GetDataWhereOneColumn(getActivity());
+//            getDataWhereOneColumn3.execute("id", framerStringArrayList.get(1), myconstant.getUrlGetUserWhereId()); //อยู่ในตำแหน่งที่ 1
+//            String jsonUserFramer = getDataWhereOneColumn3.get();
+//            Log.d("28AprilV5", "jsonFramer ==>>> " + jsonUserFramer);
+//            String[] columnUserFarmer = myconstant.getColumnDetailFramer();
+//
+//            JSONArray jsonArray3 = new JSONArray(jsonUserFramer);
+//            JSONObject jsonObject3 = jsonArray3.getJSONObject(0);
+//            for (int i = 0; i < columnUserFarmer.length; i += 1) {
+//                framerStringArrayList.add(jsonObject3.getString(columnUserFarmer[i]));
+//                Log.d("28AprilV5", "framerStringArrayList[" + i + "] ==> " + framerStringArrayList.get(i));
+//            }
+
+
 
 //            ShowView
 //            Name Product

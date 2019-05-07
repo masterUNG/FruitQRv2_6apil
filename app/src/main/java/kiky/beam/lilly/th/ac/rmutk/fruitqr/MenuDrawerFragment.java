@@ -93,8 +93,8 @@ public class MenuDrawerFragment extends Fragment {
             "เกี่ยวกับเรา",
             "ออกจากระบบ"};
 
-    //    Customer
-    private int[] iconCustomer = {
+    //    iconFarmerandProduct
+    private int[] iconFarmerandProduct = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_qrb,
             R.drawable.ic_action_listframer,
@@ -102,10 +102,11 @@ public class MenuDrawerFragment extends Fragment {
             R.drawable.ic_action_listframer,
             R.drawable.ic_action_product,
             R.drawable.ic_action_register,
+            R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,
             R.drawable.ic_action_exitt};
 
-    private String[] titleCustomer = {
+    private String[] titleFarmerandProduct = {
             "หน้าหลัก4",
             "สแกน QR Code",
             "รายการผลผลิต",
@@ -113,6 +114,7 @@ public class MenuDrawerFragment extends Fragment {
             "รายการผลิตภัณฑ์",
             "เพิ่มผลิตภัณฑ์",
             "ข้อมูลส่วนตัว",
+            "คู่มือการใช้งาน",
             "เกี่ยวกับเรา",
             "ออกจากระบบ"
     };
@@ -149,7 +151,7 @@ public class MenuDrawerFragment extends Fragment {
                 showMenu(iconProduce, titleProduct);
                 break;
             case 4:
-                showMenu(iconCustomer, titleCustomer);
+                showMenu(iconFarmerandProduct, titleFarmerandProduct);
                 break;
         }
 
@@ -418,6 +420,86 @@ public class MenuDrawerFragment extends Fragment {
     }
 
     private void chooseCase4(int position) {
+        switch (position){
+//              หน้าหลัก
+            case 0:// Fragment
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                break;
+//            สแกน QR Code
+            case 1:
+                Intent intent = new Intent(getActivity(), QRActivity.class);
+                intent.putExtra("Login", false);
+                startActivity(intent);
+
+                break;
+//              รายการผลผลิต
+            case 2:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ShowListFramerFragment()).commit();
+
+                break;
+
+//              เพิ่มรายการผลผลิต
+            case 3:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
+                break;
+
+
+//                รายการผลิตภัณฑ์
+            case 4:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ShowListProductFragment()).commit();
+                break;
+
+//                เพิ่มรายการผลิตภัณฑ์
+            case 5:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AddProductFragment()).commit();
+                break;
+
+
+//              ข้อมูลสมาชิก
+            case 6:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+                break;
+
+//              คู่มือการใช้งาน
+            case 7:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new ManualFragment()).commit();
+                break;
+
+
+//              ผู้พัฒนา
+            case 8:
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new AboutMeFragment()).commit();
+                break;
+
+//              ออกจากระบบ
+            case 9:
+                getActivity().finish();
+                break;
+        }
     }
 
     private void goTutorial(){}

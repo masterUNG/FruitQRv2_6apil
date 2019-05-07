@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,14 +54,18 @@ public class RegisterFragment extends Fragment {
                 aBoolean = false;
 
                 switch (checkedId){
+                    case R.id.radAdmin:
+                        typeString = "1";
+                        break;
+                    case R.id.radFarmer:
+                        typeString = "2";
+                        break;
                     case R.id.radProduct:
-                        typeString = "Product";
+                        typeString = "3";
                         break;
-                    case R.id.radSales:
-                        typeString = "Sales";
-                        break;
-                    case R.id.radCustomer:
-                        typeString = "Customer";
+
+                    case R.id.redFarmerandProduct:
+                        typeString = "4";
                         break;
                 }
 
@@ -82,12 +87,16 @@ public class RegisterFragment extends Fragment {
     private void uploadValueToServer() {
 
 //        Initial View
-        EditText nameEditText = getView().findViewById(R.id.editName);
+        EditText namsShopEditText = getView().findViewById(R.id.editName);
+
+        EditText nameEditText = getView().findViewById(R.id.editFirstname);
         EditText surnameEditText = getView().findViewById(R.id.editSurname);
         EditText addressEditText = getView().findViewById(R.id.editAddress);
         EditText phoneEditText = getView().findViewById(R.id.editPhone);
         EditText userEditText = getView().findViewById(R.id.editUser);
         EditText passwordEditText = getView().findViewById(R.id.editPassword);
+
+        String nameShop = namsShopEditText.getText().toString().toString();
 
         String name = nameEditText.getText().toString().trim(); //แปลงค่าText ให้เป็น String , trim ลบค่าที่เว้นวรรคอัตโนวัติ
         String surname = surnameEditText.getText().toString().trim();
@@ -98,7 +107,7 @@ public class RegisterFragment extends Fragment {
 
         MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity()); //การสร้างออปเจ็ค
 //        check Spqce  การหาช่องว่าง
-        if (name.isEmpty()|| surname.isEmpty() || address.isEmpty() || phone.isEmpty() || user.isEmpty() || password.isEmpty()) {//isEmpty ถ้าไม่มีการกรอกเป็น true
+        if (nameShop.isEmpty()|| name.isEmpty()|| surname.isEmpty() || address.isEmpty() || phone.isEmpty() || user.isEmpty() || password.isEmpty()) {//isEmpty ถ้าไม่มีการกรอกเป็น true
 
 //            Have Space
             myAlertDialog.normalDialog("Have Space", "Please Fill Every Blank");
@@ -112,10 +121,16 @@ public class RegisterFragment extends Fragment {
 
                 Myconstant myconstant = new Myconstant();
                 AddUserThread addUserThread = new AddUserThread(getActivity());
-                addUserThread.execute(name,surname,address,phone,user,password,typeString,myconstant.getUrlAddUser());
+                addUserThread.execute(nameShop,name,surname,address,phone,user,password,typeString,myconstant.getUrlAddUser());
+
+                String result = addUserThread.get();
+                Log.d("27AprilV1", "result ==> " + result);
 
                 if (Boolean.parseBoolean(addUserThread.get())) {
-                    getActivity().getSupportFragmentManager().popBackStack();
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.contentServiceFragment, new ShowListMemberFragment())
+                            .commit();   //พอทำงานเสร็จให้ไปหน้า ShowListMemberFragment
                 }else{
                     myAlertDialog.normalDialog("Cannot Upload","Please Try Again");
                 }

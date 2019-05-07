@@ -83,7 +83,7 @@ public class ShowListMemberFragment extends Fragment {
                 public void onClickitem(View view, int position) {
                     Log.d("23AprilV1", "Position ==> " + position);
 
-                    Intent intent = new Intent(getActivity(), ProductActivity.class);
+                    Intent intent = new Intent(getActivity(), ShowMemberActivity.class); //จะให้มันโยนค่าไปหน้าไหน
                     intent.putExtra("idUser", idmastertabelStringArratList.get(position));
                     startActivity(intent);
                 }
