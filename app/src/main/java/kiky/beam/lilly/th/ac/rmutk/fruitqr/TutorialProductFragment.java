@@ -14,18 +14,20 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TutorialFragment extends Fragment {
+public class TutorialProductFragment extends Fragment {
 
 
-    public TutorialFragment() {
+    public TutorialProductFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         buttonnClick();
+
     }
 
     private void buttonnClick() {
@@ -36,7 +38,7 @@ public class TutorialFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new TutorialFramerFragment()).commit();
             }
         });
 
@@ -47,28 +49,6 @@ public class TutorialFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), QRActivity.class);
                 intent.putExtra("Login", false);
                 startActivity(intent);
-            }
-        });
-
-        Button button3 = getView().findViewById(R.id.iconframer);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new ShowListFramerFragment()).commit();
-            }
-        });
-
-        Button button4 = getView().findViewById(R.id.iconaddframer);
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new AddFramerFragment()).commit();
             }
         });
 
@@ -94,17 +74,6 @@ public class TutorialFragment extends Fragment {
             }
         });
 
-        Button button7 = getView().findViewById(R.id.iconaddregister);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new RegisterFragment()).commit();
-            }
-        });
-
         Button button8 = getView().findViewById(R.id.iconregister);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +81,8 @@ public class TutorialFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new ShowListMemberFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+
             }
         });
 
@@ -147,13 +117,11 @@ public class TutorialFragment extends Fragment {
         });
     }
 
-
-
-        @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial, container, false);
+        return inflater.inflate(R.layout.fragment_tutorial_product, container, false);
     }
 
 }

@@ -107,7 +107,7 @@ public class MenuDrawerFragment extends Fragment {
             R.drawable.ic_action_exitt};
 
     private String[] titleFarmerandProduct = {
-            "หน้าหลัก4",
+            "หน้าหลัก",
             "สแกน QR Code",
             "รายการผลผลิต",
             "เพิ่มผลผลิต",
@@ -298,7 +298,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new TutorialFramerFragment()).commit();
                 break;
 //            สแกน QR Code
             case 1:
@@ -362,7 +362,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new TutorialProductFragment()).commit();
                 break;
 
 //            สแกน QR Code
@@ -426,7 +426,7 @@ public class MenuDrawerFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new TutorialFramerandProductFragment()).commit();
                 break;
 //            สแกน QR Code
             case 1:

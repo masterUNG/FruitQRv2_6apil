@@ -14,10 +14,10 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TutorialFragment extends Fragment {
+public class TutorialFramerFragment extends Fragment {
 
 
-    public TutorialFragment() {
+    public TutorialFramerFragment() {
         // Required empty public constructor
     }
 
@@ -36,7 +36,7 @@ public class TutorialFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new TutorialFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new TutorialFramerFragment()).commit();
             }
         });
 
@@ -72,38 +72,7 @@ public class TutorialFragment extends Fragment {
             }
         });
 
-        Button button5 = getView().findViewById(R.id.iconproduct);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new ShowListProductFragment()).commit();
-            }
-        });
 
-        Button button6 = getView().findViewById(R.id.iconaddproduct);
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new AddProductFragment()).commit();
-            }
-        });
-
-        Button button7 = getView().findViewById(R.id.iconaddregister);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new RegisterFragment()).commit();
-            }
-        });
 
         Button button8 = getView().findViewById(R.id.iconregister);
         button8.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +81,8 @@ public class TutorialFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new ShowListMemberFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+
             }
         });
 
@@ -147,13 +117,11 @@ public class TutorialFragment extends Fragment {
         });
     }
 
-
-
-        @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial, container, false);
+        return inflater.inflate(R.layout.fragment_tutorial_framer, container, false);
     }
 
 }

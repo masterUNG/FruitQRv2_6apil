@@ -162,10 +162,21 @@ tools:context=".InfoLoginFragment">
                 android:id="@+id/editType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:inputType="text"
                 android:textSize="30dp"
-                app:fontFamily="@font/fonts1" />
+                app:fontFamily="@font/fonts1"
+                android:layout_marginBottom="10dp"/>
+
+            <!--Type-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="[ ประเภทผู้ใช้งาน: 1. Admin 2. Farmer 3. Product 4. Farmer And Product ] "
+                android:textSize="24dp"
+                app:fontFamily="@font/fonts1"
+                android:layout_marginBottom="30dp"/>
+
 
 
         </LinearLayout>

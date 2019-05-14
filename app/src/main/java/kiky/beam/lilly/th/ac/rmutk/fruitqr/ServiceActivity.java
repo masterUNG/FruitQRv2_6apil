@@ -35,15 +35,18 @@ public class ServiceActivity extends AppCompatActivity {
 
     } //Main Method
 
+
+
     public void serviceCloseDrawer() { //ปิด Drawer
         drawerLayout.closeDrawers();
     }
 
     private void showList() {
 
+
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.contentServiceFragment, new TutorialFragment())//เปลี่ยนเป็นหน้าหลัก เป็นหน้าแรกในการเข้ารหัส
+                .add(R.id.contentServiceFragment, new BackgroundFragment())//เปลี่ยนเป็นหน้าหลัก เป็นหน้าแรกในการเข้ารหัส
 //                .add(R.id.contentServiceFragment, ShowListFragment.showListInstance(Integer.parseInt(typeUserString.trim()), idString)
                 .commit();
 

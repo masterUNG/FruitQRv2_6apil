@@ -14,10 +14,10 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TutorialFragment extends Fragment {
+public class TutorialFramerandProductFragment extends Fragment {
 
 
-    public TutorialFragment() {
+    public TutorialFramerandProductFragment() {
         // Required empty public constructor
     }
 
@@ -94,16 +94,6 @@ public class TutorialFragment extends Fragment {
             }
         });
 
-        Button button7 = getView().findViewById(R.id.iconaddregister);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new RegisterFragment()).commit();
-            }
-        });
 
         Button button8 = getView().findViewById(R.id.iconregister);
         button8.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +102,12 @@ public class TutorialFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentServiceFragment,new ShowListMemberFragment()).commit();
+                        .replace(R.id.contentServiceFragment,new InfoLoginFragment()).commit();
+
             }
         });
+
+
 
         Button button9 = getView().findViewById(R.id.iconmanual);
         button9.setOnClickListener(new View.OnClickListener() {
@@ -147,13 +140,11 @@ public class TutorialFragment extends Fragment {
         });
     }
 
-
-
-        @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial, container, false);
+        return inflater.inflate(R.layout.fragment_tutorial_framerand_product, container, false);
     }
 
 }

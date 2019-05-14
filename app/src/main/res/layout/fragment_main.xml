@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -30,24 +31,31 @@
             android:id="@+id/edtUser"
             android:inputType="text"
             android:hint="ชื่อผู้ใช้งาน :"
+            android:textSize="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/fonts1"/>
 
         <!--Password-->
         <EditText
             android:id="@+id/edtPassword"
             android:inputType="textPassword"
             android:hint="รหัสผ่าน :"
+            android:textSize="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/fonts1"/>
 
         <!--Login-->
         <Button
 
             android:id="@+id/btnLogin"
             android:text="เข้าสู่ระบบ"
+            android:textStyle="bold"
+            android:textSize="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/fonts1"/>
 
         <!--New Register-->
         <!--<TextView-->

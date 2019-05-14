@@ -1,38 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".TutorialFragment">
-
-    <!--Content-->
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="181dp">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<ImageView-->
-
-                <!--android:layout_width="408dp"-->
-                <!--android:layout_height="186dp"-->
-                <!--android:background="@drawable/farmer" />-->
-
-        <!--</LinearLayout>-->
-
-
-
-
-    <!--</ScrollView>-->
-
-    <!--android:padding="20dp" เอาไว้ให้ออกห่างจากขอบ-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
+    tools:context=".TutorialProductFragment">
 
     <ScrollView
         android:layout_above="@id/btnAddProduct"
@@ -54,10 +26,10 @@
 
             <!--<ImageView-->
 
-                <!--android:scaleType="fitXY"-->
-                <!--android:src="@drawable/farmer"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" >-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@drawable/farmer"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" >-->
 
 
 
@@ -108,14 +80,14 @@
                     app:fontFamily="@font/fonts1"/>
 
                 <Button
-                    android:id="@+id/iconframer"
+                    android:id="@+id/iconproduct"
                     android:layout_marginBottom="1dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginRight="15dp"
                     android:layout_width="1dp"
                     android:layout_height="84dp"
                     android:layout_weight="0.4"
-                    android:background="@drawable/iconframer"
+                    android:background="@drawable/iconproduct"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:fontFamily="@font/fonts1" />
@@ -129,14 +101,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/iconaddframer"
+                    android:id="@+id/iconaddproduct"
                     android:layout_marginBottom="1dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginLeft="15dp"
                     android:layout_width="1dp"
                     android:layout_height="84dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/iconaddframer"
+                    android:background="@drawable/iconaddproduct"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:fontFamily="@font/fonts1" />
@@ -151,8 +123,8 @@
                 <Button
                     android:layout_marginBottom="1dp"
                     android:layout_marginTop="1dp"
-                    android:id="@+id/iconproduct"
-                    android:background="@drawable/iconproduct"
+                    android:id="@+id/iconregister"
+                    android:background="@drawable/iconregister"
                     android:layout_width="1dp"
                     android:layout_height="84dp"
                     android:layout_weight="0.5"
@@ -170,9 +142,9 @@
                 <Button
                     android:layout_marginBottom="1dp"
                     android:layout_marginTop="1dp"
-                    android:id="@+id/iconaddproduct"
+                    android:id="@+id/iconmanual"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/iconaddproduct"
+                    android:background="@drawable/iconmanual"
                     android:layout_width="1dp"
                     android:layout_height="84dp"
                     android:layout_weight="0.5"
@@ -182,65 +154,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:orientation="horizontal">
 
-            <Button
-                android:layout_marginBottom="1dp"
-                android:layout_marginTop="1dp"
-                android:id="@+id/iconaddregister"
-                android:layout_marginLeft="15dp"
-                android:layout_width="1dp"
-                android:layout_height="84dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/iconaddregister"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:fontFamily="@font/fonts1" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textColor="#000000"
-                app:fontFamily="@font/fonts1"/>
-
-            <Button
-                android:layout_marginBottom="1dp"
-                android:layout_marginTop="1dp"
-                android:id="@+id/iconregister"
-                android:background="@drawable/iconregister"
-                android:layout_width="1dp"
-                android:layout_height="84dp"
-                android:layout_weight="0.5"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:fontFamily="@font/fonts1" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textColor="#000000"
-                app:fontFamily="@font/fonts1"/>
-
-            <Button
-                android:layout_marginBottom="1dp"
-                android:layout_marginTop="1dp"
-                android:id="@+id/iconmanual"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/iconmanual"
-                android:layout_width="1dp"
-                android:layout_height="84dp"
-                android:layout_weight="0.5"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:fontFamily="@font/fonts1" />
-
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -303,5 +217,4 @@
 
     </ScrollView>
 
-</LinearLayout>
-
+</FrameLayout>

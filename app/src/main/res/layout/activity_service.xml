@@ -46,9 +46,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="177dp"
             android:scaleType="fitXY"
-            android:src="@drawable/logoo" />
+            android:src="@drawable/backfruit" />
 
         <TextView
             android:layout_marginLeft="8dp"
@@ -56,7 +56,8 @@
             android:layout_height="42dp"
             android:text="เมนู :"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/fonts1" />
 
         <FrameLayout
             android:layout_marginLeft="8dp"
