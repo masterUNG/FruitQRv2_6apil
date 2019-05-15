@@ -41,6 +41,17 @@ public class Myconstant {
     private String urlGetDetailFramerWhereIdRecord = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordLilly.php"; //ดูได้แค่ผู้ผลิค
     private String urlGetAllDetailFramer = "http://www.androidthai.in.th/rmutk/getAllDetaiFramerLilly.php"; //Admin ดูได้ทั้งหมด DetailFramer
 
+    private String urlGetDetailFarmerWhereName = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereNameLilly.php"; //ปุ่มค้นหา ให้ค้นหาชื่อผลไม้
+    private String utlGetMasterWhereName = "http://www.androidthai.in.th/rmutk/getMasterWhereNameLilly.php";//ปุ่มค้นหา สวน
+
+
+    public String getUtlGetMasterWhereName() {
+        return utlGetMasterWhereName;
+    }
+
+    public String getUrlGetDetailFarmerWhereName() {
+        return urlGetDetailFarmerWhereName;
+    }
 
     public String getUrlEditUserWhereId() {
         return urlEditUserWhereId;
