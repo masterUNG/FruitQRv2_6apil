@@ -458,11 +458,12 @@
 
 
             <TextView
+                android:text="สวนกวาง"
                 android:id="@+id/txtFruitName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
-                android:textSize="@dimen/h2"
+                android:textSize="24dp"
                 app:fontFamily="@font/fonts1"/>
 
             <!--Line ทำเส้น-->
@@ -485,6 +486,7 @@
 
             <TextView
                 android:id="@+id/txtFruitAdd"
+                android:text="231 ม.2 ต.สวนผึ้ง อ.สวนผึ้ง จ.ราชบุรี 70180"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
@@ -511,6 +513,7 @@
 
             <TextView
                 android:id="@+id/txtFruitPhone"
+                android:text="0894544730"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
@@ -522,7 +525,8 @@
                 android:layout_marginTop="10dp"
                 android:background="#CEC8C8"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 

@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AboutMeFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,49 +21,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
             <!--หัวข้อ-->
-            <TextView
-                android:id="@+id/txtaa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="เกี่ยวกับเรา"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorAA"
-                app:fontFamily="@font/fonts1"/>
 
             <!--ช่องว่าง-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
-            </LinearLayout>
 
-            <!--เนื้อหา-->
-            <TextView
-                android:id="@+id/txtbb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="ระบบจัดการห่วงโซ่อุปทานอิเล็กทรอนิกส์สำหรับผลิตภัณฑ์ชุมชน กรณีศึกษากลุ่มนำร่องชุมชนบ้านบึง อำเภอบ้านคา จังหวัดราชบุรี"
-                android:textColor="@color/colorAA"
-                android:textSize="30dp"
-                app:fontFamily="@font/fonts1"/>
+            <!--&lt;!&ndash;เนื้อหา&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:id="@+id/txtbb"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="ระบบจัดการห่วงโซ่อุปทานอิเล็กทรอนิกส์สำหรับผลิตภัณฑ์ชุมชน กรณีศึกษากลุ่มนำร่องชุมชนบ้านบึง อำเภอบ้านคา จังหวัดราชบุรี"-->
+                <!--android:textColor="@color/colorAA"-->
+                <!--android:textSize="30dp"-->
+                <!--app:fontFamily="@font/fonts1"/>-->
+
+            <ImageView
+                android:src="@drawable/aboutme"
+                android:scaleType="center"
+                android:id="@+id/imv3"
+                android:layout_width="match_parent"
+                android:layout_height="550dp" />
 
             <!--ช่องว่าง-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
-            </LinearLayout>
 
             <!--Logo-->
 
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -98,6 +89,10 @@
                     android:layout_width="43dp"
                     android:layout_height="50dp"
                     android:src="@drawable/fruitwatermelon" />
+                <ImageView
+                    android:layout_width="43dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/fruitappel" />
 
 
             </LinearLayout>
@@ -105,5 +100,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
