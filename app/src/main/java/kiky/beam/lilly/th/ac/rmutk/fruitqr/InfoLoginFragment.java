@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -44,11 +45,24 @@ public class InfoLoginFragment extends Fragment {
         //        Show View
         showView();
 
+//        Edit Controller
+        editController();
 
 //        uploadValueToServer();
 
 //        onBackPressed();
     }
+
+    private void editController() {
+        Button button = getView().findViewById(R.id.btnInfoLogin);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadValueToServer();
+            }
+        });
+    }
+
     private void showView() {
         try {
 
@@ -98,73 +112,76 @@ public class InfoLoginFragment extends Fragment {
 
     }
 
-//    private void uploadValueToServer() {
-//
-////        Initial View
-//        EditText namsShopEditText = getView().findViewById(R.id.editName);
-//
-//        EditText nameEditText = getView().findViewById(R.id.editFirstname);
-//        EditText surnameEditText = getView().findViewById(R.id.editSurname);
-//        EditText addressEditText = getView().findViewById(R.id.editAddress);
-//        EditText phoneEditText = getView().findViewById(R.id.editPhone);
-//        EditText userEditText = getView().findViewById(R.id.editUser);
-//        EditText passwordEditText = getView().findViewById(R.id.editPassword);
-////        EditText typeEditText = getView().findViewById(R.id.editType);
-//
-//
-//        String nameShop = namsShopEditText.getText().toString().toString();
-//
-//        String name = nameEditText.getText().toString().trim(); //แปลงค่าText ให้เป็น String , trim ลบค่าที่เว้นวรรคอัตโนวัติ
-//        String surname = surnameEditText.getText().toString().trim();
-//        String address = addressEditText.getText().toString().trim();
-//        String phone = phoneEditText.getText().toString().trim();
-//        String user = userEditText.getText().toString().trim();
-//        String password = passwordEditText.getText().toString().trim();
-////        String type = typeEditText.getText().toString().trim();
-//
-//        MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity()); //การสร้างออปเจ็ค
-////        check Spqce  การหาช่องว่าง
-//        if (nameShop.isEmpty()|| name.isEmpty()|| surname.isEmpty() || address.isEmpty() || phone.isEmpty() || user.isEmpty() || password.isEmpty()) {//isEmpty ถ้าไม่มีการกรอกเป็น true
-//
-////            Have Space
-//            myAlertDialog.normalDialog("Have Space", "Please Fill Every Blank");
-//        } else if (aBoolean){
-////            Non Choose
-//            myAlertDialog.normalDialog("Non Choose Type User", "Please Choose Type User");
-//        }else{
-//
-////            Upload to Server
-//            try {
-//
-//                Myconstant myconstant = new Myconstant();
-//                AddUserThread addUserThread = new AddUserThread(getActivity());
-//                addUserThread.execute(nameShop,name,surname,address,phone,user,password,myconstant.getUrlEditUserWhereId());
-//
-//                String result = addUserThread.get();
-//                Log.d("27AprilV1", "result ==> " + result);
-//
-//                if (Boolean.parseBoolean(addUserThread.get())) {
-//                    getActivity().getSupportFragmentManager()
-//                            .beginTransaction()
-//                            .replace(R.id.contentServiceFragment, new TutorialFragment())
-//                            .commit();   //พอทำงานเสร็จให้ไปหน้า ShowListMemberFragment
-//                }else{
-//                    myAlertDialog.normalDialog("Cannot Upload","Please Try Again");
-//                }
-//
-//
-//            }catch (Exception e){
-//                e.printStackTrace();
-//            }
-//
-//
-//        }
-//
+    private void uploadValueToServer() {
 
-//    }
+//        Initial View
+        EditText namsShopEditText = getView().findViewById(R.id.editName);
+        EditText nameEditText = getView().findViewById(R.id.editFirstname);
+        EditText surnameEditText = getView().findViewById(R.id.editSurname);
+        EditText addressEditText = getView().findViewById(R.id.editAddress);
+        EditText phoneEditText = getView().findViewById(R.id.editPhone);
+        EditText userEditText = getView().findViewById(R.id.editUser);
+        EditText passwordEditText = getView().findViewById(R.id.editPassword);
+//        EditText typeEditText = getView().findViewById(R.id.editType);
 
 
-//
+        String nameShop = namsShopEditText.getText().toString().toString();
+
+        String name = nameEditText.getText().toString().trim(); //แปลงค่าText ให้เป็น String , trim ลบค่าที่เว้นวรรคอัตโนวัติ
+        String surname = surnameEditText.getText().toString().trim();
+        String address = addressEditText.getText().toString().trim();
+        String phone = phoneEditText.getText().toString().trim();
+        String user = userEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+//        String type = typeEditText.getText().toString().trim();
+
+        MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity()); //การสร้างออปเจ็ค
+//        check Spqce  การหาช่องว่าง
+        if (nameShop.isEmpty()|| name.isEmpty()|| surname.isEmpty() || address.isEmpty() || phone.isEmpty() || user.isEmpty() || password.isEmpty()) {//isEmpty ถ้าไม่มีการกรอกเป็น true
+
+//            Have Space
+            myAlertDialog.normalDialog("Have Space", "Please Fill Every Blank");
+        } else if (aBoolean){
+//            Non Choose
+            myAlertDialog.normalDialog("Non Choose Type User", "Please Choose Type User");
+        }else{
+
+//            Upload to Server
+            try {
+
+
+
+
+
+                Myconstant myconstant = new Myconstant();
+                AddUserThread addUserThread = new AddUserThread(getActivity());
+                addUserThread.execute(nameShop,name,surname,address,phone,user,password,myconstant.getUrlEditUserWhereId());
+
+                String result = addUserThread.get();
+                Log.d("27AprilV1", "result ==> " + result);
+
+                if (Boolean.parseBoolean(addUserThread.get())) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.contentServiceFragment, new TutorialFragment())
+                            .commit();   //พอทำงานเสร็จให้ไปหน้า ShowListMemberFragment
+                }else{
+                    myAlertDialog.normalDialog("Cannot Upload","Please Try Again");
+                }
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
+
+
+
     //////////////// onBackPressed
 //    public void onBackPressed() {
 //        AlertDialog.Builder dialog = new AlertDialog.Builder(this);

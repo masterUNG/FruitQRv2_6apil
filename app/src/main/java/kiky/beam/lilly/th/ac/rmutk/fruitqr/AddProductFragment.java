@@ -53,8 +53,7 @@ import it.sauronsoftware.ftp4j.FTPDataTransferListener;
  */
 public class AddProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image = "https://www.androidthai.in.th/rmutk/Picture/product.png"
-            , Amount, Unit, Date, QRcode;
+    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image = "https://www.androidthai.in.th/rmutk/Picture/product.png", Amount, Unit, Date, QRcode;
 
     private ImageView imageView;
     private Uri uri;
@@ -119,7 +118,6 @@ public class AddProductFragment extends Fragment {
             result = Integer.toString(i);
 
             return result;
-
 
 
         } catch (Exception e) {
@@ -277,7 +275,7 @@ public class AddProductFragment extends Fragment {
 
     }
 
-    private void upDataMySQL(){
+    private void upDataMySQL() {
 
         try {
 
@@ -383,6 +381,13 @@ public class AddProductFragment extends Fragment {
     }
 
     private void createRecyclerView() {
+
+        final ArrayList<String> nameFruitStringArrayList = new ArrayList<>();
+        ArrayList<String> amountStringArrayList = new ArrayList<>();
+        ArrayList<String> unitStringArrayList = new ArrayList<>();
+        final ArrayList<String> idStringArrayList = new ArrayList<>();
+
+
         try {
 
             RecyclerView recyclerView = getView().findViewById(R.id.recyclerFramer);
@@ -391,40 +396,26 @@ public class AddProductFragment extends Fragment {
             recyclerView.setLayoutManager(linearLayoutManager);
 
             GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
-            getAllDataThread.execute(myconstant.getUrlGetAllFramer());
+            getAllDataThread.execute(myconstant.getUrlGetTypeFruit());
 
-            String result = getAllDataThread.get();
-            final ArrayList<String> nameStringArrayList = new ArrayList<>();
-            ArrayList<String> amountStringArrayList = new ArrayList<>();
-            ArrayList<String> dateStringArrayList = new ArrayList<>();
-            ArrayList<String> ownerStringArrayList = new ArrayList<>();
-            final ArrayList<String> idStringArrayList = new ArrayList<>();
-            Log.d("11AprilV1", result);
-
-            JSONArray jsonArray = new JSONArray(result);
+            JSONArray jsonArray = new JSONArray(getAllDataThread.get());
             for (int i = 0; i < jsonArray.length(); i += 1) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                nameStringArrayList.add(jsonObject.getString("Name"));
-                amountStringArrayList.add(jsonObject.getString("Amount") + " " + jsonObject.getString("Unit"));
-                dateStringArrayList.add(jsonObject.getString("Date"));
-                ownerStringArrayList.add(jsonObject.getString("idRecord"));
-                idStringArrayList.add(jsonObject.getString("id")); //ตาราง datailframer
-
+                nameFruitStringArrayList.add(jsonObject.getString("NameFruit"));
+                amountStringArrayList.add(jsonObject.getString("Amount"));
+                unitStringArrayList.add(jsonObject.getString("Unit"));
+                idStringArrayList.add(jsonObject.getString("id"));
             }
 
-            ShowListFramerAdapter showListFramerAdapter = new ShowListFramerAdapter(getActivity(),
-                    nameStringArrayList, amountStringArrayList, dateStringArrayList, ownerStringArrayList,
-                    new OnClickItem() {
-                        @Override
-                        public void onClickitem(View view, int position) {
-                            confirmFruit(nameStringArrayList.get(position), idStringArrayList.get(position));
-                           //ลบผลผลิต
-                            idDeleteDetailFarmerString = idStringArrayList.get(position);
+            TotalFruitAdapter totalFruitAdapter = new TotalFruitAdapter(getActivity(), nameFruitStringArrayList,
+                    amountStringArrayList, unitStringArrayList, new OnClickItem() {
+                @Override
+                public void onClickitem(View view, int position) {
+                    confirmFruit(nameFruitStringArrayList.get(position), idStringArrayList.get(position));
+                }
+            });
 
-                        }
-                    });
-
-            recyclerView.setAdapter(showListFramerAdapter);
+            recyclerView.setAdapter(totalFruitAdapter);
 
 
         } catch (Exception e) {
