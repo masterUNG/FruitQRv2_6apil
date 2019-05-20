@@ -95,52 +95,12 @@ public class DetailFragment extends Fragment {
 
                 Myconstant myconstant = new Myconstant();
                 GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
-                getDataWhereOneColumn.execute("QR", qrCode, myconstant.getUrlGetDataWhereQR());
+                getDataWhereOneColumn.execute("QRcode", qrCode, myconstant.getUrlGetDetailProductWhereQR());
 
                 String json = getDataWhereOneColumn.get();
                 Log.d("2FebV1", "json ==> " + json);
 
-                JSONArray jsonArray = new JSONArray(json);
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                nameString = jsonObject.getString("Name");
-                imageString = jsonObject.getString("Image");
-                idShopString = jsonObject.getString("idUser");
-                amountString = jsonObject.getString("Amount");
-                unitString = jsonObject.getString("Unit");
-                dateString = jsonObject.getString("Date");
-
-                TextView nameTextView = getView().findViewById(R.id.txtName);
-                nameTextView.setText(nameString);
-
-                ImageView imageView = getView().findViewById(R.id.imvDetail);
-                Picasso.get().load(imageString).into(imageView);
-
-                TextView amountTextView = getView().findViewById(R.id.txtAmount);
-                amountTextView.setText(amountString);
-
-                TextView unitTextView = getView().findViewById(R.id.txtUnit);
-                unitTextView.setText(unitString);
-
-                TextView dateTextView = getView().findViewById(R.id.txtDate);
-                dateTextView.setText(dateString);
-
-                GetDataWhereOneColumn getDataWhereOneColumn1 = new GetDataWhereOneColumn(getActivity());
-                getDataWhereOneColumn1.execute("id", idShopString, myconstant.getUrlGetUserWhereId());
-                String json2 = getDataWhereOneColumn1.get();
-                Log.d("2FebV2", "json2 ==> " + json2);
-
-                JSONArray jsonArray1 = new JSONArray(json2);
-                JSONObject jsonObject1 = jsonArray1.getJSONObject(0);
-
-                TextView nameShopTextView = getView().findViewById(R.id.txtShop);
-                nameShopTextView.setText(jsonObject1.getString("Name"));
-
-                TextView addressTextView = getView().findViewById(R.id.txtAddress);
-                addressTextView.setText(jsonObject1.getString("Address"));
-
-                TextView phoneTextView = getView().findViewById(R.id.txtPhone);
-                phoneTextView.setText(jsonObject1.getString("Phone"));
 
             } catch (Exception e) {
                 e.printStackTrace();
