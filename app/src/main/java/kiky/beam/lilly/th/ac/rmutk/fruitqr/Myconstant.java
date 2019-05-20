@@ -15,6 +15,8 @@ public class Myconstant {
 
     private String nameFileSharePreference = "Fruit";
 
+    private String urlGetTypeFruit = "https://www.androidthai.in.th/rmutk/getAllTypeFruit.php";
+
     private String urlEditUserWhereId = "http://www.androidthai.in.th/rmutk/editUserWhereId.php"; //แก้ไข
 
     private String urlDeleteDetailFarmerWhereId = "http://www.androidthai.in.th/rmutk/deleteDatailFarmeWhereIdlilly.php"; //ลบผลผลิตออก
@@ -45,6 +47,11 @@ public class Myconstant {
     private String urlGetMasterWhereName = "http://www.androidthai.in.th/rmutk/getMasterWhereNameLilly.php";//ปุ่มค้นหา สวน
 
     private  String urlGetDetailFramerWhereIdRecordAnNameLilly = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordAnNameLilly.php";
+
+
+    public String getUrlGetTypeFruit() {
+        return urlGetTypeFruit;
+    }
 
     public String getUrlGetDetailFramerWhereIdRecordAnNameLilly() {
         return urlGetDetailFramerWhereIdRecordAnNameLilly;

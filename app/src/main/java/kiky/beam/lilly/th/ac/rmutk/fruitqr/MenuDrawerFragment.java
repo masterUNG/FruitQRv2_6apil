@@ -27,6 +27,7 @@ public class MenuDrawerFragment extends Fragment {
     private int[] iconAdmin = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_qrb,
+            R.drawable.ic_action_home,
             R.drawable.ic_action_listframer,
             R.drawable.ic_action_framer,
             R.drawable.ic_action_listframer,
@@ -40,6 +41,7 @@ public class MenuDrawerFragment extends Fragment {
     private String[] titleAdmin = {
             "หน้าหลัก",
             "สแกน QR Code",
+            "รายการผลผลิกชุมชน",
             "รายการผลผลิต",
             "เพิ่มผลผลิต",
             "รายการผลิตภัณฑ์",
@@ -216,8 +218,18 @@ public class MenuDrawerFragment extends Fragment {
                 startActivity(intent);
 
                 break;
-//              รายการผลผลิต
+
             case 2:
+
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,new TotalFarmerListFragment()).commit();
+
+                break;
+
+//              รายการผลผลิต
+            case 3:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -226,7 +238,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              เพิ่มรายการผลผลิต
-            case 3:
+            case 4:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -234,7 +246,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //                รายการผลิตภัณฑ์
-            case 4:
+            case 5:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -242,7 +254,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //                เพิ่มรายการผลิตภัณฑ์
-            case 5:
+            case 6:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -250,7 +262,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //                เพิ่มสมาชิก
-            case 6:
+            case 7:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -258,7 +270,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              ข้อมูลสมาชิก
-            case 7:
+            case 8:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -266,7 +278,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              คู่มือการใช้งาน
-            case 8:
+            case 9:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -275,7 +287,7 @@ public class MenuDrawerFragment extends Fragment {
 
 
 //              ผู้พัฒนา
-            case 9:
+            case 10:
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -283,7 +295,7 @@ public class MenuDrawerFragment extends Fragment {
                 break;
 
 //              ออกจากระบบ
-            case 10:
+            case 11:
                 getActivity().finish();
                 break;
         }
