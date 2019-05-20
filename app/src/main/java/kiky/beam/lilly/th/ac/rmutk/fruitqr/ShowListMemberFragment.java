@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class ShowListMemberFragment extends Fragment {
 
     private Myconstant myconstant = new Myconstant();
+    private String typeUserString, idRecordString, search;
 
     public ShowListMemberFragment() {
         // Required empty public constructor
@@ -42,6 +43,10 @@ public class ShowListMemberFragment extends Fragment {
 
     private void createRecylerView() {
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
+        typeUserString = sharedPreferences.getString("TypeUser", "");
+        idRecordString = sharedPreferences.getString("idLogin", "");
+
         RecyclerView recyclerView = getView().findViewById(R.id.recyclerShowListMember);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
@@ -49,6 +54,7 @@ public class ShowListMemberFragment extends Fragment {
 
 
         try {
+
             GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
             getAllDataThread.execute(myconstant.getUrlgetAllDataOrderByDesc());
 
@@ -71,6 +77,7 @@ public class ShowListMemberFragment extends Fragment {
                 firstnameStringArratList.add(jsonObject.getString("FirstName"));
                 secondnameStringArratList.add(jsonObject.getString("SecondName"));
                 phoneStringArratList.add(jsonObject.getString("Phone"));
+
                 typeStringArratList.add(jsonObject.getString("TypeUser"));
 
                 idmastertabelStringArratList.add(jsonObject.getString("id"));

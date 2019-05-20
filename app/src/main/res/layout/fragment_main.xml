@@ -44,29 +44,32 @@
             android:textSize="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:fontFamily="@font/fonts1"/>
+            app:fontFamily="@font/fonts1"
+            android:layout_marginBottom="5dp"/>
 
         <!--Login-->
         <Button
-
+            android:background="@drawable/tablogin"
             android:id="@+id/btnLogin"
+
             android:text="เข้าสู่ระบบ"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:fontFamily="@font/fonts1"/>
 
         <!--New Register-->
-        <!--<TextView-->
-            <!--android:clickable="true"-->
-            <!--android:id="@+id/txtRegister"-->
-            <!--android:textColor="@color/colorAccent"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:text="New Register"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" />-->
+        <TextView
+
+            android:clickable="true"
+            android:id="@+id/txtRegister"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"
+            android:text="New Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

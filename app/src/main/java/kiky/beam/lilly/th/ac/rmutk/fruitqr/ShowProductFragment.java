@@ -128,6 +128,23 @@ public class ShowProductFragment extends Fragment {
                 Log.d("18AprilV5", "userStringArrayList[" + i + "] ==> " + userStringArrayList.get(i));
             }
 
+            //สำหรับ For Farmer
+//            GetDataWhereOneColumn farmerGetDataWhereOneColumn2 = new GetDataWhereOneColumn(getActivity());
+//            farmerGetDataWhereOneColumn2.execute("id", framerStringArrayList.get(1), myconstant.getUrlGetUserWhereId());
+//            String result = farmerGetDataWhereOneColumn2.get();
+//            Log.d("15MayV1", "result ==> " + result);
+//
+//            JSONArray farmerJsonArray2 = new JSONArray(result);
+//            JSONObject farmerJsonObject2 = farmerJsonArray2.getJSONObject(0);
+//
+//            TextView nameFarmerTextView = getView().findViewById(R.id.txtFruitName);
+//            nameFarmerTextView.setText(farmerJsonObject2.getString("Name"));
+//
+//            TextView addFarmerTextView = getView().findViewById(R.id.txtFruitAdd);
+//            addFarmerTextView.setText(farmerJsonObject2.getString("Address"));
+//
+//            TextView phoneFarmerTextView = getView().findViewById(R.id.txtFruitPhone);
+//            phoneFarmerTextView.setText(farmerJsonObject2.getString("Phone"));
 
 
 //            //สำหรับ Framer
@@ -146,10 +163,15 @@ public class ShowProductFragment extends Fragment {
 
 
 
+            //Famer User
+
+
+
+
 //            ShowView
 //            Name Product
-            TextView nameTextView = getView().findViewById(R.id.txtName);
-            nameTextView.setText(productStringArrayList.get(5));
+//            TextView nameTextView = getView().findViewById(R.id.txtName);
+//            nameTextView.setText(productStringArrayList.get(5));
 
 //            Image Product
             ImageView imageView = getView().findViewById(R.id.imvImage);
@@ -181,31 +203,31 @@ public class ShowProductFragment extends Fragment {
             productnameTextView.setText(productStringArrayList.get(2));
 
 //          Address Product
-            TextView productaddressTextView = getView().findViewById(R.id.txtProductAdd);
-            productaddressTextView.setText(userStringArrayList.get(4));
+//            TextView productaddressTextView = getView().findViewById(R.id.txtProductAdd);
+//            productaddressTextView.setText(userStringArrayList.get(4));
 
 //          Phone Product
-            TextView productphoneTextView = getView().findViewById(R.id.txtProductPhone);
-            productphoneTextView.setText(userStringArrayList.get(5));
+//            TextView productphoneTextView = getView().findViewById(R.id.txtProductPhone);
+//            productphoneTextView.setText(userStringArrayList.get(5));
 
 
 
 //            ShowView
 //            Name Fruit
-            TextView fruitTextView = getView().findViewById(R.id.txtFruit);
-            fruitTextView.setText(framerStringArrayList.get(2));
-
-//          name Fruit
-            TextView fruittTextView = getView().findViewById(R.id.txtFruitt);
-            fruittTextView.setText(framerStringArrayList.get(2));
+//            TextView fruitTextView = getView().findViewById(R.id.txtFruit);
+//            fruitTextView.setText(framerStringArrayList.get(2));
+//
+////          name Fruit
+//            TextView fruittTextView = getView().findViewById(R.id.txtFruitt);
+//            fruittTextView.setText(framerStringArrayList.get(2));
 
 //          Amount Fruit
-            TextView fruitamountTextView = getView().findViewById(R.id.txtFruitAmount);
-            fruitamountTextView.setText(framerStringArrayList.get(3));
+//            TextView fruitamountTextView = getView().findViewById(R.id.txtFruitAmount);
+//            fruitamountTextView.setText(framerStringArrayList.get(3));
 
 //          Unit Fruit
-            TextView fruitunitTextView = getView().findViewById(R.id.txtFruitUnit);
-            fruitunitTextView.setText(framerStringArrayList.get(4));
+//            TextView fruitunitTextView = getView().findViewById(R.id.txtFruitUnit);
+//            fruitunitTextView.setText(framerStringArrayList.get(4));
 
 //          Date Fruit
             TextView fruitdateTextView = getView().findViewById(R.id.txtFruitdate);
@@ -216,12 +238,12 @@ public class ShowProductFragment extends Fragment {
             fruitnameTextView.setText(userStringArrayList.get(1));
 
 //          Address Fruit
-            TextView fruitaddressTextView = getView().findViewById(R.id.txtProductAdd);
-            fruitaddressTextView.setText(userStringArrayList.get(4));
+//            TextView fruitaddressTextView = getView().findViewById(R.id.txtProductAdd);
+//            fruitaddressTextView.setText(userStringArrayList.get(4));
 
 //          Phone Fruit
-            TextView fruitphoneTextView = getView().findViewById(R.id.txtProductPhone);
-            fruitphoneTextView.setText(userStringArrayList.get(5));
+//            TextView fruitphoneTextView = getView().findViewById(R.id.txtProductPhone);
+//            fruitphoneTextView.setText(userStringArrayList.get(5));
 
 
         } catch (Exception e) {

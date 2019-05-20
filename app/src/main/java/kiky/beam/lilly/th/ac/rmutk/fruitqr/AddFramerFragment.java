@@ -80,9 +80,32 @@ public class AddFramerFragment extends Fragment {
                 dateString = dateTextView.getText().toString();
 
                 if (nameFruitABoolean) {
-                    myAlertDialog.normalDialog("Non Choose Name Fruit", "Please Choose Name Fruit");     //ยังไม่ได้เลือกชื่อผลไม้ผล //กรุณาใส่ชื่อผลไม้
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("โปรดเลือกชื่อผลผลิต");
+                    builder.setMessage("กรุณาเลือกชื่อผลผลิตอีกครั้ง");
+                    builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {//ปุ่มที่2
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+//                    myAlertDialog.normalDialog("โปรดเลือกชื่อผลผลิต", "กรุณาเลือกชื่อผลผลิตอีกครั้ง");     //ยังไม่ได้เลือกชื่อผลไม้ผล //กรุณาใส่ชื่อผลไม้
+
                 } else if (amountString.isEmpty()) {//isEmpty มีการกรอกหรือป่าว
-                    myAlertDialog.normalDialog("No Amount ?", "Please Fill Amount");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("โปรดกรอกราคาผลผลิต");
+                    builder.setMessage("กรุณากรอกราคาผลผลิตอีกครั้ง");
+                    builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {//ปุ่มที่2
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+//                    myAlertDialog.normalDialog("โปรดกรอกราคาผลผลิต", "กรุณากรอกราคาผลผลิตอีกครั้ง");
                 } else {
                     Log.d("7April", "idRecord ==>> "+ idRecord);
                     Log.d("7April", "Name ==>> "+ nameFruit);
@@ -100,15 +123,15 @@ public class AddFramerFragment extends Fragment {
 
     private void comfirmUpload() { //ป็อบอัพ
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Please Comfirm Data");
-        builder.setMessage("Name = " + nameFruit + "\n" + "Amount = " + amountString + " " + unitString + "\n" + "Date = "+ dateString);
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {//ปุ่มที่1
+        builder.setTitle("โปรดยืนยันข้อมูล");
+        builder.setMessage("ชื่อผลผลิต = " + nameFruit + "\n" + "ราคา = " + amountString + " " + unitString + "\n" + "วันที่เก็บเกี่ยว = "+ dateString);
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {//ปุ่มที่1
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         }); //
-        builder.setPositiveButton("Comfirm", new DialogInterface.OnClickListener() {//ปุ่มที่2
+        builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {//ปุ่มที่2
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 uploadToServer();
@@ -132,7 +155,7 @@ public class AddFramerFragment extends Fragment {
 
             }else{
                 //ไม่สำเร็จ
-                Toast.makeText(getActivity(), "Cannot Upload Please Try Agin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "บันทึกข้อมูลผลผลิตไม่สำเร็จ กรุณากรอกข้อมูลผลผลิตใหม่อีกครั้ง", Toast.LENGTH_SHORT).show();
 
             }
 

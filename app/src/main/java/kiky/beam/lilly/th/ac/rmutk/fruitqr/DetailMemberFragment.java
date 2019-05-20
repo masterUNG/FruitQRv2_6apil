@@ -26,7 +26,7 @@ public class DetailMemberFragment extends Fragment {
     private String titleToolbar = "รายละเอียดสมาชิก";
     private Myconstant myconstant = new Myconstant();
     private ArrayList<String> stringArrayList = new ArrayList<>();
-    private String[] typeUsers = {"", "Admin", "Farmer", "Product", "Farmer and Product"};
+    private String[] typeUsers = {"", "ผู้ดูแลระบบ", "เจ้าของผลผลิต", "เจ้าของผลิตภัณฑ์", "เจ้าของผลผลิตและเจ้าของผลิตภัณฑ์"};
     private String typeUserSting;
 
     public DetailMemberFragment() {

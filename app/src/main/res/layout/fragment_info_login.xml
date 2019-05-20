@@ -11,7 +11,7 @@ tools:context=".InfoLoginFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btnAddProduct">
+        android:layout_above="@id/btnInfoLogin">
 
 
         <LinearLayout
@@ -172,7 +172,7 @@ tools:context=".InfoLoginFragment">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="[ ประเภทผู้ใช้งาน: 1. Admin 2. Farmer 3. Product 4. Farmer And Product ] "
+                android:text="[ ประเภทผู้ใช้งาน: 1. ผู้ดูแลระบบ 2. เจ้าของผลผลิต 3. เจ้าของผลิตภัณฑ์ 4. เจ้าของผลผลิตและเจ้าของผลิตภัณฑ์ ] "
                 android:textSize="24dp"
                 app:fontFamily="@font/fonts1"
                 android:layout_marginBottom="30dp"/>
@@ -185,8 +185,9 @@ tools:context=".InfoLoginFragment">
 
 <!--Button Add-->
 <Button
+    android:background="@drawable/tabedit"
     android:layout_alignParentBottom="true"
-    android:id="@+id/btnUpload"
+    android:id="@+id/btnInfoLogin"
     android:text="แก้ไขข้อมูล"
     android:textSize="24dp"
     android:textStyle="bold"

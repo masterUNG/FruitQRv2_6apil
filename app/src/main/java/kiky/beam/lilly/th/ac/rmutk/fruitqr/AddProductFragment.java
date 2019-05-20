@@ -439,15 +439,15 @@ public class AddProductFragment extends Fragment {
 
         //ป็อบอัพ
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Confirm Fruit");
+        builder.setTitle("ยืนยันการเลือกผลผลิค");
         builder.setMessage("คุณต้องการเลือก " + nameFruit);
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        builder.setPositiveButton("COnfirm", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 idFarmer = idFruit;

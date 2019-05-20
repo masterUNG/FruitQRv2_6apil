@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RegisterFragment">
 
 
@@ -31,14 +32,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ชื่อร้าน/ชื่อสวน :"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <EditText
                     android:id="@+id/editFirstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ชื่อ :"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--Surname-->
                 <EditText
@@ -46,7 +51,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="นามสกุล :"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--Address-->
                 <EditText
@@ -56,7 +63,9 @@
                     android:gravity="top"
                     android:hint="ที่อยู่ :"
                     android:inputType="textMultiLine"
-                    android:lines="3" />
+                    android:lines="3"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--Phone-->
                 <EditText
@@ -64,7 +73,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="เบอร์โทรศัพท์ :"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--User-->
                 <EditText
@@ -72,7 +83,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ผู้ใช้งาน :"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--Password-->
                 <EditText
@@ -80,7 +93,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="รหัสผ่าน: "
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <!--Group User-->
                 <TextView
@@ -88,8 +103,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="ประเภทผู้ใช้งาน"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/fonts1"
+                    android:textSize="25dp"/>
 
                 <RadioGroup
                     android:id="@+id/ragType"
@@ -98,30 +114,34 @@
                     android:layout_marginLeft="30dp"
                     android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/radAdmin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Admin" />
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radAdmin"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Admin" />-->
 
                     <RadioButton
                         android:id="@+id/radFarmer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Farmer" />
+                        android:text="เจ้าของผลผลิต"
+                        app:fontFamily="@font/fonts1"
+                        android:textSize="25dp"/>
 
                     <RadioButton
                         android:id="@+id/radProduct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Product" />
+                        android:text="เจ้าของผลิตภัณฑ์"
+                        app:fontFamily="@font/fonts1"
+                        android:textSize="25dp"/>
 
-                    <RadioButton
-                        android:id="@+id/redFarmerandProduct"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Farmer and Product"
-                        android:layout_marginBottom="40dp"/>
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/redFarmerandProduct"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Farmer and Product"-->
+                        <!--android:layout_marginBottom="40dp"/>-->
                 </RadioGroup>
 
             </LinearLayout>
@@ -129,11 +149,14 @@
         </ScrollView>
 
         <Button
+            android:background="@drawable/tabsave"
             android:id="@+id/btnUpload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="บันทึกลงฐานข้อมูล" />
+            android:text="บันทึก"
+            app:fontFamily="@font/fonts1"
+            android:textSize="25dp"/>
 
     </RelativeLayout>
 

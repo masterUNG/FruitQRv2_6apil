@@ -31,6 +31,7 @@ public class ShowListFramerFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
     private boolean searchABoolean = true;  // true ==> Search ชื่อผลไม้ false ชื่อสวน
     private int indexSearch = 1;
+    private RadioGroup radioGroup;
 
     public ShowListFramerFragment() {
         // Required empty public constructor
@@ -39,19 +40,22 @@ public class ShowListFramerFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //        Type Controller
+        typeController();
+
         //การสร้าง Create Recycler
         createRecyclerView(0);
 
 //        Search Controller
         searchController();
 
-//        Type Controller
-        typeController();
+
 
     }   // Main Method
 
     private void typeController() {
-        RadioGroup radioGroup = getView().findViewById(R.id.ragSearch);
+        radioGroup = getView().findViewById(R.id.ragSearch);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -109,14 +113,16 @@ public class ShowListFramerFragment extends Fragment {
 //                    Search by ผลไม้
                     Log.d("15MayV1", "Search by ผลไม้");
                     Log.d("15MayV1", "Search ==> " + search);
-                    MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
 
                     GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
                     getDataWhereOneColumn.execute("Name", search, myconstant.getUrlGetDetailFarmerWhereName());
                     result = getDataWhereOneColumn.get();
 
-                    MyAlertDialog myAlertDialog1 = new MyAlertDialog(getActivity());
-                    myAlertDialog1.normalDialog("ไม่มีชื่อผลไม้นี้","ไม่มีชื่อผลไม้นี้อยู่ในฐานข้อมูล");
+                    if (result.equals("null")) {
+                        MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
+                        myAlertDialog.normalDialog("ไม่มีชื่อผลไม้นี้", "ไม่มีชื่อผลไม้นี้ในฐานข้อมูล");
+                    }
+
                     Log.d("15MayV1", "result ==> " + result);
 
                 } else {
@@ -124,35 +130,52 @@ public class ShowListFramerFragment extends Fragment {
                     Log.d("15MayV1", "Search by สวน");
 
                     GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
-                    getDataWhereOneColumn.execute("Name", search, myconstant.getUtlGetMasterWhereName());
+                    getDataWhereOneColumn.execute("Name", search, myconstant.getUrlGetMasterWhereName());
 
                     String resultGarden = getDataWhereOneColumn.get();
-                    Log.d("15MayV1", "result ==> " + resultGarden);
+                    Log.d("15MayV1", "resultGarden ==> " + resultGarden);
                     MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
 
                     if (resultGarden.equals("null")) {
-                        myAlertDialog.normalDialog("ไม่มีชื่อสวนนี้","ไม่มีชื่อสวนนี้อยู่ในฐานข้อมูล");
-                    }else{
+                        myAlertDialog.normalDialog("ไม่มีชื่อสวนนี้", "ไม่มีชื่อสวนนี้ในฐานข้อมูล");
+                    } else {
                         JSONArray jsonArray = new JSONArray(resultGarden);
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                         String idGarden = jsonObject.getString("id");
-                        Log.d("15MayV1", "idgarden ==> " + idGarden);
+                        Log.d("15MayV1", "idGarden ==> " + idGarden);
 
                         GetDataWhereOneColumn getDataWhereOneColumn1 = new GetDataWhereOneColumn(getActivity());
                         getDataWhereOneColumn1.execute("idRecord", idGarden, myconstant.getUrlGetDetailFramerWhereIdRecord());
                         result = getDataWhereOneColumn1.get();
+
                     }
+
+
                 }
 
             } else{ //สถานะมากกว่า1
 
+                radioGroup.setVisibility(View.INVISIBLE);
+
+
                 if (indexSearch == 0) {
+
                     GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
                     getDataWhereOneColumn.execute("idRecord", idRecordString, myconstant.getUrlGetDetailFramerWhereIdRecord());
                     result = getDataWhereOneColumn.get();
                 } else {
 //                    Search ผลไม้
                     Log.d("15MayV1", "Search by ผลไม้");
+
+                    Log.d("15MayV1", "idRecordString ==> " + idRecordString);
+                    Log.d("15MayV1", "Search ==> " + search);
+
+                    GetDataWhereTwoColunmThread getDataWhereTwoColunmThread = new GetDataWhereTwoColunmThread(getActivity());
+                    getDataWhereTwoColunmThread.execute("idRecord", idRecordString.trim(), "Name", search.trim(), myconstant.getUrlGetDetailFramerWhereIdRecordAnNameLilly());
+                    result = getDataWhereTwoColunmThread.get();
+
+                    Log.d("15MayV1", "result ==> " + result);
+
                 }
 
             }

@@ -55,8 +55,8 @@ public class MenuDrawerFragment extends Fragment {
     private int[] iconFramer = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_qrb,
-            R.drawable.ic_action_framer,
             R.drawable.ic_action_listframer,
+            R.drawable.ic_action_framer,
             R.drawable.ic_action_register,
             R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,
@@ -76,8 +76,8 @@ public class MenuDrawerFragment extends Fragment {
     private int[] iconProduce = {
             R.drawable.ic_action_home,
             R.drawable.ic_action_qrb,
-            R.drawable.ic_action_framer,
             R.drawable.ic_action_listframer,
+            R.drawable.ic_action_framer,
             R.drawable.ic_action_register,
             R.drawable.ic_action_manual,
             R.drawable.ic_action_aboutme,

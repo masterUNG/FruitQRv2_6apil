@@ -68,7 +68,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     private String showType(String typeUserString) {
 
-        String[] strings = {"", "Admin", "Farmer", "Product", "Farmer and Product"};
+        String[] strings = {"", ": ผู้ดูแลระบบ", ": เจ้าของผลผลิต", ": เจ้าของผลิตภัณฑ์", ": เจ้าของผลผลิตและเป็นเจ้าของผลิตภัณฑ์"};
         try {
 
             int index = Integer.parseInt(typeUserString.trim());

@@ -54,9 +54,9 @@ public class RegisterFragment extends Fragment {
                 aBoolean = false;
 
                 switch (checkedId){
-                    case R.id.radAdmin:
-                        typeString = "1";
-                        break;
+//                    case R.id.radAdmin:
+//                        typeString = "1";
+//                        break;
                     case R.id.radFarmer:
                         typeString = "2";
                         break;
@@ -64,9 +64,9 @@ public class RegisterFragment extends Fragment {
                         typeString = "3";
                         break;
 
-                    case R.id.redFarmerandProduct:
-                        typeString = "4";
-                        break;
+//                    case R.id.redFarmerandProduct:
+//                        typeString = "4";
+//                        break;
                 }
 
             }

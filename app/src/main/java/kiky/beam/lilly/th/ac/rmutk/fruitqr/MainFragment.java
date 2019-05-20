@@ -120,7 +120,7 @@ public class MainFragment extends Fragment {
                         if (b){
                             myAlertDialog.normalDialog("กรุณาตรวจสอบชื่อผู้ใช้งานให้ถูกต้อง", "ไม่มีผู้ใช้งานนี้อยู่ในระบบ");
                         }else if (password.equals(truePassword)) {
-                            Toast.makeText(getActivity(),"Welcome  "+name,Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(getActivity(),"ยินดีต้อนรับ  "+name,Toast.LENGTH_SHORT).show();;
                             //ฝัง idlogin ในแอพ
                             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myconstant.getNameFileSharePreference(), Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();

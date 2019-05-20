@@ -112,7 +112,6 @@
                     android:background="@drawable/calendar"
                     android:layout_alignParentRight="true"
                     android:id="@+id/btnSetDate"
-                    android:text="Set Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:fontFamily="@font/fonts1"/>
@@ -134,7 +133,6 @@
                 android:text="product0001"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:fontFamily="@font/fonts1"/>
 
 
@@ -148,11 +146,11 @@
 
     <!--Button Add-->
     <Button
+        android:background="@drawable/tabsave"
         android:layout_alignParentBottom="true"
         android:id="@+id/btnAddProduct"
-        android:text="Add Product"
+        android:text="บันทึก"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
 </RelativeLayout>
