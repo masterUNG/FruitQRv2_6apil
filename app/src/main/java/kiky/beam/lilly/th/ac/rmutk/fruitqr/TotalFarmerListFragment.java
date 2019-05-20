@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,14 +43,36 @@ public class TotalFarmerListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         Myconstant myconstant = new Myconstant();
+        ArrayList<String> nameFruidStrings = new ArrayList<>();
+        ArrayList<String> amountStrings = new ArrayList<>();
+        ArrayList<String> unitStrings = new ArrayList<>();
 
         try {
 
             GetAllDataThread getAllDataThread = new GetAllDataThread(getActivity());
             getAllDataThread.execute(myconstant.getUrlGetTypeFruit());
             String response = getAllDataThread.get();
-            Log.d("20MayV1", "reaponse ==> "  + response);
+            Log.d("20MayV1", "reaponse ==> " + response);
 
+            JSONArray jsonArray = new JSONArray(response);
+            for (int i = 0; i < jsonArray.length(); i += 1) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                nameFruidStrings.add(jsonObject.getString("NameFruit"));
+                amountStrings.add(jsonObject.getString("Amount"));
+                unitStrings.add(jsonObject.getString("Unit"));
+
+            }
+
+            TotalFruitAdapter totalFruitAdapter = new TotalFruitAdapter(getActivity(), nameFruidStrings, amountStrings,
+                    unitStrings, new OnClickItem() {
+                @Override
+                public void onClickitem(View view, int position) {
+                    Log.d("20MayV1", "You Click position ==> " + position);
+                }
+            });
+
+            recyclerView.setAdapter(totalFruitAdapter);
 
 
         } catch (Exception e) {
