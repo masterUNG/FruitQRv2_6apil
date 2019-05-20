@@ -15,6 +15,10 @@ public class Myconstant {
 
     private String nameFileSharePreference = "Fruit";
 
+    private String urlEditAmountWhereNameFruit = "https://www.androidthai.in.th/rmutk/editAmountWhereNameFruit.php";
+
+    private String urlGetTypeTruitWhereNameFruid = "https://www.androidthai.in.th/rmutk/getTypeFruitWhereNameFruit.php";
+
     private String urlGetTypeFruit = "https://www.androidthai.in.th/rmutk/getAllTypeFruit.php";
 
     private String urlEditUserWhereId = "http://www.androidthai.in.th/rmutk/editUserWhereId.php"; //แก้ไข
@@ -48,6 +52,13 @@ public class Myconstant {
 
     private  String urlGetDetailFramerWhereIdRecordAnNameLilly = "http://www.androidthai.in.th/rmutk/getDetailFramerWhereIdRecordAnNameLilly.php";
 
+    public String getUrlEditAmountWhereNameFruit() {
+        return urlEditAmountWhereNameFruit;
+    }
+
+    public String getUrlGetTypeTruitWhereNameFruid() {
+        return urlGetTypeTruitWhereNameFruid;
+    }
 
     public String getUrlGetTypeFruit() {
         return urlGetTypeFruit;

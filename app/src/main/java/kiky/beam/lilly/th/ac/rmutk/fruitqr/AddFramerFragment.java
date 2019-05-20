@@ -144,6 +144,25 @@ public class AddFramerFragment extends Fragment {
     private void uploadToServer() {
 
         try {
+
+            GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
+            getDataWhereOneColumn.execute("NameFruit", nameFruit.trim(), myconstant.getUrlGetTypeTruitWhereNameFruid());
+            String response = getDataWhereOneColumn.get();
+            Log.d("20MayV2", "response ==> " + response);
+
+            JSONArray jsonArray = new JSONArray(response);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            String amountString2 = jsonObject.getString("Amount");
+
+            int amountInt = Integer.parseInt(amountString2) + Integer.parseInt(amountString);
+            String amountCurrent = Integer.toString(amountInt);
+
+            EditDataOneColumnThread editDataOneColumnThread = new EditDataOneColumnThread(getActivity());
+            editDataOneColumnThread.execute("NameFruit", nameFruit, "Amount", amountCurrent, myconstant.getUrlEditAmountWhereNameFruit());
+            Log.d("20MayV3", "Result ==> " + getDataWhereOneColumn.get());
+
+
+
             AddDetailFramerThread addDetailFramerThread = new AddDetailFramerThread(getActivity());
             addDetailFramerThread.execute(idRecord, nameFruit, amountString, unitString,
                     dateString, myconstant.getUrlAddDetailFramer());
@@ -209,7 +228,7 @@ public class AddFramerFragment extends Fragment {
 
 
                     }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONDAY), calendar.get(Calendar.DAY_OF_MONTH));//ตั้งการค่าตั้งต้น ทำการสั่งวันที่ปัจจุบันให้ตรงกับปุ่ม
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));//ตั้งการค่าตั้งต้น ทำการสั่งวันที่ปัจจุบันให้ตรงกับปุ่ม
                 datePickerDialog.show();
             }//DAY_OF_MONTH 30วัน
         });
