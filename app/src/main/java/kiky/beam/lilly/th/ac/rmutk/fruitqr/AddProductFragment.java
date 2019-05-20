@@ -53,7 +53,8 @@ import it.sauronsoftware.ftp4j.FTPDataTransferListener;
  */
 public class AddProductFragment extends Fragment {
     private Myconstant myconstant = new Myconstant();
-    private String idRecord, NameRecord, TypeRecord, idFarmer = "", Name, Detail, Image = "https://www.androidthai.in.th/rmutk/Picture/product.png", Amount, Unit, Date, QRcode;
+    private String idRecord, NameRecord, TypeRecord, amountTypeFruitString = "",
+            idTypeFruid = "", Name, Detail, Image = "https://www.androidthai.in.th/rmutk/Picture/product.png", Amount, Unit, Date, QRcode;
 
     private ImageView imageView;
     private Uri uri;
@@ -195,7 +196,7 @@ public class AddProductFragment extends Fragment {
 
 
                 MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
-                if (idFarmer.length() == 0) {
+                if (idTypeFruid.length() == 0) {
                     myAlertDialog.normalDialog("ยังไม่ได้เลือก ผลผลิต", "กรุณาเลือกผลผลิต");
 
                 } else if (Name.isEmpty()) {
@@ -279,15 +280,20 @@ public class AddProductFragment extends Fragment {
 
         try {
 
-//            //ลบผลผลิตออกก่อน
-//            GetDataWhereOneColumn getDataWhereOneColumn = new GetDataWhereOneColumn(getActivity());
-//            getDataWhereOneColumn.execute("id", idDeleteDetailFarmerString, myconstant.getUrlDeleteDetailFarmerWhereId());
-//            String resultDelete = getDataWhereOneColumn.get();
-//            Log.d("27AprilV1", "trsult ==> " + resultDelete);
+//            Edit Amount on TypeFruit
+            int currentAmountInt = Integer.parseInt(amountTypeFruitString) - Integer.parseInt(Amount);
+            String amountCurrentString = Integer.toString(currentAmountInt);
+
+            EditDataOneColumnThread editDataOneColumnThread = new EditDataOneColumnThread(getActivity());
+            editDataOneColumnThread.execute("id", idTypeFruid, "Amount", amountCurrentString,
+                    myconstant.getUrlEditAmountWhereId());
+
+
+
 
             //อัพโหลด
             AddDetailProductThread addDetailProductThread = new AddDetailProductThread(getActivity());
-            addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idFarmer, Name,
+            addDetailProductThread.execute(idRecord, NameRecord, TypeRecord, idTypeFruid, Name,
                     Detail, Image, Amount, Unit, Date, QRcode, myconstant.getUrlAddDetailProduct());
             String result = addDetailProductThread.get();
 
@@ -383,9 +389,10 @@ public class AddProductFragment extends Fragment {
     private void createRecyclerView() {
 
         final ArrayList<String> nameFruitStringArrayList = new ArrayList<>();
-        ArrayList<String> amountStringArrayList = new ArrayList<>();
+        final ArrayList<String> amountStringArrayList = new ArrayList<>();
         ArrayList<String> unitStringArrayList = new ArrayList<>();
         final ArrayList<String> idStringArrayList = new ArrayList<>();
+
 
 
         try {
@@ -411,6 +418,7 @@ public class AddProductFragment extends Fragment {
                     amountStringArrayList, unitStringArrayList, new OnClickItem() {
                 @Override
                 public void onClickitem(View view, int position) {
+                    amountTypeFruitString = amountStringArrayList.get(position);
                     confirmFruit(nameFruitStringArrayList.get(position), idStringArrayList.get(position));
                 }
             });
@@ -441,7 +449,7 @@ public class AddProductFragment extends Fragment {
         builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                idFarmer = idFruit;
+                idTypeFruid = idFruit;
                 textView.setText("ผลผลิต ที่เลือก " + nameFruit);
                 dialog.dismiss();
             }

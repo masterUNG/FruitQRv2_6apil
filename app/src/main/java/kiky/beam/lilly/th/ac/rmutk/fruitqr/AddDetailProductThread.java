@@ -29,7 +29,7 @@ public class AddDetailProductThread extends AsyncTask<String, Void, String> {
                     .add("idRecord",strings[0])
                     .add("NameRecord",strings[1])
                     .add("TypeRecord",strings[2])
-                    .add("idFarmer",strings[3])
+                    .add("idTypeFruit",strings[3])
                     .add("Name",strings[4])
                     .add("Detail",strings[5])
                     .add("Image",strings[6])
